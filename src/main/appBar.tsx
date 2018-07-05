@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
+import AppBarComponent from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import * as classNames from 'classnames';
 import * as React from 'react';
-import Main from './main';
+import Main from './mainContent';
 import Drawer, { drawerWidth } from './drawer';
 
 const styles = (theme: Theme) => createStyles({
@@ -78,7 +78,9 @@ const styles = (theme: Theme) => createStyles({
   },
 });
 
-class PersistentDrawer extends React.Component<WithStyles<typeof styles>, { open: boolean, anchor: string }> {
+export interface AppBarProps extends WithStyles<typeof styles>{}
+export interface AppBarState { open: boolean, anchor: string }
+export class AppBarNaked extends React.Component<AppBarProps, AppBarState> {
   state = {
     open: false,
     anchor: 'left',
@@ -100,7 +102,7 @@ class PersistentDrawer extends React.Component<WithStyles<typeof styles>, { open
     return (
       <div className={classes.root}>
         <div className={classes.appFrame}>
-          <AppBar
+          <AppBarComponent
             className={classNames(classes.appBar, {
               [classes.appBarShift]: open,
               [(classes as any)[`appBarShift-${this.state.anchor}`]]: open,
@@ -111,7 +113,7 @@ class PersistentDrawer extends React.Component<WithStyles<typeof styles>, { open
                 color="inherit"
                 aria-label="open drawer"
                 onClick={() => this.handleDrawerOpen()}
-                className={classNames(classes.menuButton, open && classes.hide)}
+                className={classNames('toolbar-button', classes.menuButton, open && classes.hide)}
               >
                 <MenuIcon />
               </IconButton>
@@ -126,7 +128,7 @@ class PersistentDrawer extends React.Component<WithStyles<typeof styles>, { open
                 <svg fill="#fff" height="26" width="26" viewBox="7 4 32 32" version="1.1"><g><path d="m13.3 31.7h-5v-16.7h5v16.7z m18.4 0h-5v-8.9c0-2.4-0.9-3.5-2.5-3.5-1.3 0-2.1 0.6-2.5 1.9v10.5h-5s0-15 0-16.7h3.9l0.3 3.3h0.1c1-1.6 2.7-2.8 4.9-2.8 1.7 0 3.1 0.5 4.2 1.7 1 1.2 1.6 2.8 1.6 5.1v9.4z m-18.3-20.9c0 1.4-1.1 2.5-2.6 2.5s-2.5-1.1-2.5-2.5 1.1-2.5 2.5-2.5 2.6 1.2 2.6 2.5z"></path></g></svg>
               </Button>
             </Toolbar>
-          </AppBar>
+          </AppBarComponent>
 
             <Drawer open={this.state.open} handleDrawerClose={() => this.handleDrawerClose()} />
 
@@ -143,5 +145,4 @@ class PersistentDrawer extends React.Component<WithStyles<typeof styles>, { open
   }
 }
 
-
-export default withStyles(styles, { withTheme: true })(PersistentDrawer);
+export const AppBar = withStyles(styles, { withTheme: true })(AppBarNaked);

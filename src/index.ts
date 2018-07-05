@@ -1,5 +1,5 @@
 import * as ReactDOM from 'react-dom';
-import App from './app'
+import App from './main/app'
 
 const app = document.createElement('div')
 app.setAttribute('id', 'app')

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "start": "webpack-dev-server --config webpack.dev.js --open"
+    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Sebastian Gurin",
@@ -22,14 +23,22 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.4",
+    "@types/enzyme": "^3.1.11",
+    "@types/jest": "^23.1.4",
     "@types/material-ui": "^0.21.3",
     "@types/prop-types": "^15.5.3",
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
     "@types/react-router-dom": "^4.2.7",
+    "@types/sinon": "^5.0.1",
     "clean-webpack-plugin": "^0.1.19",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.0.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.0.0-rc.12",
+    "jest": "^23.3.0",
+    "sinon": "^6.1.0",
+    "ts-jest": "^23.0.0",
     "ts-loader": "^4.4.2",
     "ts-node": "^7.0.0",
     "typescript": "^2.9.2",
@@ -40,8 +49,21 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build",
-      "pre-push": "npm run build"
+      "pre-commit": "npm run build"
     }
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

@@ -3,7 +3,7 @@ import { create } from 'jss';
 import * as React from 'react';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { CssBaseline } from '@material-ui/core';
-import AppBar from './appBar';
+import {AppBar} from './appBar';
 import { BrowserRouter } from 'react-router-dom';
 
 const generateClassName = createGenerateClassName();
