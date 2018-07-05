@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['docs']),
     new HtmlWebpackPlugin({
-      title: 'Development'
+      template: 'src/index.html'
     })
   ],
   module: {
@@ -17,7 +17,7 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/
       },
-    ]
+    ],
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
