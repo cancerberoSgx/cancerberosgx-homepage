@@ -13,6 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { Link } from 'react-router-dom';
 
 export const drawerWidth = 240;
 
@@ -20,17 +21,14 @@ const styles = (theme: Theme) => createStyles({
   drawerPaper: {
     position: 'relative',
     width: drawerWidth,
+    paddingLeft: '10px',
   },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    // padding: '0 8px',
     ...theme.mixins.toolbar,
-  },
-  hide: {
-    display: 'none',
-  },
+  }
 });
 
 const drawer = (props: WithStyles<typeof styles>&{open: boolean, handleDrawerClose: ()=>void})=>(
@@ -49,9 +47,9 @@ const drawer = (props: WithStyles<typeof styles>&{open: boolean, handleDrawerClo
       </IconButton>
     </div>
     <Divider />
-    holas
+      <Link to="/">Home</Link>
     <Divider />
-    joooolas
+      <Link to="/page1">Page 1</Link>
   </Drawer>
 );
 

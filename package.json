@@ -17,7 +17,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-jss": "^8.6.0"
+    "react-jss": "^8.6.0",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.4",
@@ -25,6 +26,7 @@
     "@types/prop-types": "^15.5.3",
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
+    "@types/react-router-dom": "^4.2.7",
     "clean-webpack-plugin": "^0.1.19",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.0.0-rc.12",

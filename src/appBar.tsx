@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import * as classNames from 'classnames';
 import * as React from 'react';
-import Content from './content';
+import Main from './main';
 import Drawer, { drawerWidth } from './drawer';
 
 const styles = (theme: Theme) => createStyles({
@@ -135,9 +135,7 @@ class PersistentDrawer extends React.Component<WithStyles<typeof styles>, { open
                 [classes.contentShift]: open,
                 [classes[`contentShift-${this.state.anchor}`]]: open,
               })} >
-            <Content />
-            <div className={classes.drawerHeader} />
-            <Typography>{'You think water moves fast? You should see ice.'}</Typography>
+            <Main />
           </main>
         </div>
       </div>
