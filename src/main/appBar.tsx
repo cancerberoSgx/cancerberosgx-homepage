@@ -3,12 +3,11 @@ import AppBarComponent from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import Main from './mainContent';
-import Drawer, { drawerWidth } from './drawer';
+import Drawer, { drawerWidth } from './menu';
 import AppBarIcons from './AppBarIcons';
 
 const styles = (theme: Theme) => createStyles({
@@ -16,7 +15,7 @@ const styles = (theme: Theme) => createStyles({
     flexGrow: 1,
   },
   appFrame: {
-    height: 430,
+    height: '100%',
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -40,9 +39,6 @@ const styles = (theme: Theme) => createStyles({
   'appBarShift-left': {
     marginLeft: drawerWidth,
   },
-  'appBarShift-right': {
-    marginRight: drawerWidth,
-  },
   menuButton: {
     marginLeft: 12,
     marginRight: 20,
@@ -60,10 +56,7 @@ const styles = (theme: Theme) => createStyles({
     }),
   },
   'content-left': {
-    marginLeft: -drawerWidth,
-  },
-  'content-right': {
-    marginRight: -drawerWidth,
+    marginLeft: -drawerWidth - 100,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -73,10 +66,7 @@ const styles = (theme: Theme) => createStyles({
   },
   'contentShift-left': {
     marginLeft: 0,
-  },
-  'contentShift-right': {
-    marginRight: 0,
-  },
+  }
 });
 
 export interface AppBarProps extends WithStyles<typeof styles> { }
@@ -97,7 +87,7 @@ export class AppBarNaked extends React.Component<AppBarProps, AppBarState> {
 
   render(): React.ReactNode {
 
-    const { classes, theme }: { classes: any, theme?: Theme } = this.props
+    const { classes }: { classes: any, theme?: Theme } = this.props
     const { open } = this.state;
 
     return (
@@ -116,19 +106,16 @@ export class AppBarNaked extends React.Component<AppBarProps, AppBarState> {
                     color="inherit"
                     aria-label="open drawer"
                     onClick={() => this.handleDrawerOpen()}
-                    className={classNames('toolbar-button', classes.menuButton, open && classes.hide)}
+                    className={classNames('__test__toolbar-button', classes.menuButton, open && classes.hide)}
                   >
                     <MenuIcon />
                   </IconButton>
                   <span>Sebastian Gurin home page</span>
                 </Grid>
-                <Grid item xs={6} sm={6} style={{flexBasis: '50%'}}>
-
-                  <AppBarIcons/>
+                <Grid item xs={6} sm={6} style={{ flexBasis: '50%' }}>
+                  <AppBarIcons />
                 </Grid>
               </Grid>
-
-
             </Toolbar>
           </AppBarComponent>
 

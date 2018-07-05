@@ -21,7 +21,7 @@ describe('<AppBar />', () => {
     expect(appBar.find(AppBar).length).toBe(1)
     const handleDrawerOpen = spyOn((AppBar as any).Naked.prototype, 'handleDrawerOpen')
     expect(handleDrawerOpen.calls.count()).toBe(0)
-    appBar.find('.toolbar-button').first().simulate('click')
+    appBar.find('.__test__toolbar-button').first().simulate('click')
     expect(handleDrawerOpen.calls.count()).toBe(1)
   })
 

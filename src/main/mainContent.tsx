@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { withStyles, Theme, createStyles, WithStyles } from '@material-ui/core/styles';
-import { Route, Switch } from 'react-router';
-import page1 from '../page/page1';
+import { Route, Switch,  } from 'react-router';
+import projects from '../page/projects';
 import home from '../page/home';
 
 const styles = (theme: Theme) => createStyles({
@@ -18,7 +18,8 @@ function main (props: WithStyles<typeof styles>) {
       
     <Switch>
       <Route exact path='/' component={home}/>
-      <Route path='/page1' component={page1}/>
+      <Route path='/projects' component={projects}/>
+      <Route path="*" component={home}/>
     </Switch>
 
     </div>

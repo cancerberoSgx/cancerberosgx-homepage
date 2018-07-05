@@ -4,7 +4,7 @@ export default createMuiTheme({
   palette: {
     primary: {
       light: '#757ce8',
-      main: '#3f50b5',
+      main: '#3f9db5',
       dark: '#002884',
       contrastText: '#fff',
     },
@@ -15,4 +15,11 @@ export default createMuiTheme({
       contrastText: '#000',
     },
   },
+  overrides: {
+    MuiButton: {
+      root: {
+        textTransform: 'none'
+      }
+    }
+  }
 }) as Theme;
