@@ -110,7 +110,6 @@ export class AppBarNaked extends React.Component<AppBarProps, AppBarState> {
                   >
                     <MenuIcon />
                   </IconButton>
-                  <span>Sebastian Gurin home page</span>
                 </Grid>
                 <Grid item xs={6} sm={6} style={{ flexBasis: '50%' }}>
                   <AppBarIcons />
