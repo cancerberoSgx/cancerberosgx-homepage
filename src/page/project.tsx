@@ -18,24 +18,9 @@ const styles = (theme: Theme) => createStyles({
   },
   chip: {
     margin: theme.spacing.unit,
-    // fontSize: theme.spacing.unit*0.9
+    // fontSize: theme.spacing.unit * 0.96
   },
 });
-
-
-const projects: Project[] = [
-  {
-    "name": "short-jsdoc",
-    "description": "jsdoc implementation with flexible and shorter syntax, written from scratch, with emphasis in rich type support",
-    "repositoryUrl": "https://github.com/cancerberoSgx/short-jsdoc",
-    "projectPage": "http://cancerberosgx.github.io/short-jsdoc/doc/guide/",
-    "language": [language.JavaScript],
-    "runtime": [runtime.NodeJs, runtime.browser],
-    "tags": [
-      tag.JavaScript, tag.parser, tag.documentation
-    ]
-  }
-]
 
 function Projects(props: WithStyles<typeof styles> & { project: Project }) {
   const { classes } = props;
@@ -57,20 +42,31 @@ function Projects(props: WithStyles<typeof styles> & { project: Project }) {
         </Typography>
       </CardContent>
       <CardActions>
-
-        <Typography className={classes.title} color="textSecondary">
-        
-        {project.tags.map(tag =>
-            <Chip
-              clickable
-              label={tag}
-              className={classes.chip}
-              component={(props: ChipProps & LinkProps) => <Link to={"/projects?filterByTag="+tag} {...props} />} />
-          )}
-        </Typography>
+        <p><strong>Libraries: </strong>
+          <Typography className={classes.title} color="textSecondary">
+            {project.libraries.map(lib =>
+              <Chip
+                clickable
+                label={lib}
+                className={classes.chip}
+                component={(props: ChipProps & LinkProps) => <Link to={"/projects?filterByTag=" + lib} {...props} />} />
+            )}
+          </Typography>
+        </p>
+        <p><strong>Areas: </strong>
+          <Typography className={classes.title} color="textSecondary">
+            {project.area.map(tag =>
+              <Chip
+                clickable
+                label={tag}
+                className={classes.chip}
+                component={(props: ChipProps & LinkProps) => <Link to={"/projects?filterByTag=" + tag} {...props} />} />
+            )}
+          </Typography>
+        </p>
       </CardActions>
     </Card>
   );
 }
 
-export default withStyles(styles, {withTheme: true})(Projects);
+export default withStyles(styles, { withTheme: true })(Projects);
