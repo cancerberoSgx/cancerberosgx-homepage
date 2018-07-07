@@ -152,6 +152,15 @@ const drawer = (props: WithStyles<typeof styles> & { open: boolean, handleDrawer
           <ListItemText primary="LinkedIn profile" secondary="Have an updated CV" />
         </Button>
       </ListItem>
+
+      <ListItem>
+        <Button color="inherit" title="StackOverflow Profile" href="https://stackoverflow.com/users/1179379/cancerbero">
+        <Avatar>
+          {''}
+        </Avatar>
+          <ListItemText primary="StackOverflow Profile" secondary="Sometimes I answer questions" />
+        </Button>
+      </ListItem>
     </List>
 
 
