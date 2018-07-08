@@ -7,8 +7,7 @@ module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      minify: true
+      template: 'src/index.html'
     })
   ],
 });
