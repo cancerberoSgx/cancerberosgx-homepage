@@ -3,7 +3,7 @@ import * as Enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 import { MemoryRouter } from 'react-router';
-import { AppBar, AppBarState } from './appBar';
+import { AppBar, AppBarNaked, AppBarState } from './appBar';
 
 describe('<AppBar />', () => {
 
@@ -19,7 +19,7 @@ describe('<AppBar />', () => {
 
   it('should call handleDrawerOpen and handleDrawerClose', () => {
     expect(appBar.find(AppBar).length).toBe(1)
-    const handleDrawerOpen = spyOn((AppBar as any).Naked.prototype, 'handleDrawerOpen')
+    const handleDrawerOpen = spyOn(AppBarNaked.prototype, 'handleDrawerOpen')
     expect(handleDrawerOpen.calls.count()).toBe(0)
     appBar.find('.__test__toolbar-button').first().simulate('click')
     expect(handleDrawerOpen.calls.count()).toBe(1)

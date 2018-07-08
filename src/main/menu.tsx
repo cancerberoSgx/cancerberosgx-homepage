@@ -17,6 +17,7 @@ import workExperience from '../icon/workExperience.tsx';
 import educationIcon from '../icon/educationIcon';
 import githubProfileIcon from '../icon/githubProfileIcon';
 import linkedinProfileIcon from '../icon/linkedinProfileIcon';
+import stackOverflowIcon from '../icon/stackOverflowIcon';
 
 export const drawerWidth = '400';
 
@@ -152,7 +153,7 @@ const drawer = (props: WithStyles<typeof styles> & { open: boolean, handleDrawer
       <ListItem>
         <Button color="inherit" title="StackOverflow Profile" href="https://stackoverflow.com/users/1179379/cancerbero">
         <Avatar>
-          {''}
+          {stackOverflowIcon()}
         </Avatar>
           <ListItemText primary="StackOverflow Profile" secondary="Sometimes I answer questions" />
         </Button>

@@ -3,11 +3,11 @@ import { withStyles, Theme, createStyles, WithStyles } from '@material-ui/core/s
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { CardContent, Typography, CardActions, Button, Card, ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails } from '@material-ui/core';
-import { projects } from './projectData';
-import Project from './project'
+import { projects } from '../project/projectData';
+import Project from '../project/project'
 import * as classNames from 'classnames';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import  Auto1 from './autosuggest1';
+import  SearchAutoSuggest from '../project/projectSearchAutoSuggest';
 
 
 const styles = (theme: Theme) => createStyles({
@@ -52,21 +52,21 @@ function ProjectComponent(props: WithStyles<typeof styles>) {
             <ExpansionPanelDetails>
               <Typography>
                 Search tags
-                <Auto1 mode="tag"/>
+                <SearchAutoSuggest mode="tag"/>
               </Typography>
 
               <Typography>
                 Search projects
-                <Auto1 mode="project"/>
+                <SearchAutoSuggest mode="project"/>
               </Typography>
               <Typography>
                 Search tags sectioned
-                <Auto1 mode="tagSectioned"/>
+                <SearchAutoSuggest mode="tagSectioned"/>
               </Typography>
 
               <Typography>
                 Search projects sectioned
-                <Auto1 mode="projectSectioned"/>
+                <SearchAutoSuggest mode="projectSectioned"/>
               </Typography>
             </ExpansionPanelDetails>
           </ExpansionPanel>
