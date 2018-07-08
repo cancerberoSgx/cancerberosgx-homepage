@@ -16,7 +16,7 @@ inquirer.prompt<{user: string, password: string}>([
   }
 ])
 .then(a=>{
-  execSync(`curl -u "${a.user}:${a.password}" "https://api.github.com/user/repos" > tmp_repos.json`)
+  execSync(`curl -u "${a.user}:${a.password}" "https://api.github.com/user/repos?per_page=300" > tmp_repos.json`)
   const repos = JSON.parse(readFileSync('tmp_repos.json').toString()) as any[]
   const notForks = repos.filter(r=>!r.fork)
   console.log(notForks.length);

@@ -27,7 +27,7 @@ function ProjectComponent(props: WithStyles<typeof styles>) {
 
   return (
     <div className={classes.root  }>
-      <Grid container spacing={24} alignItems="center" alignContent="center" justify="center">
+      <Grid container spacing={24} alignItems="center" alignContent="center" justify="center" >
         <Grid item xs={12} sm={11} md={10} lg={9} xl={8}>
           <ExpansionPanel defaultExpanded={true}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
@@ -60,7 +60,7 @@ function ProjectComponent(props: WithStyles<typeof styles>) {
 
       </Grid>
 
-      <Grid container spacing={24} >
+      <Grid container spacing={24} alignItems="stretch">
         {projects.map(project =>
           <Grid item xs={12} sm={6} lg={4}>
             <Project project={project} />
