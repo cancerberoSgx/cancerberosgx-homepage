@@ -8,6 +8,8 @@ import Project from '../project/project'
 import * as classNames from 'classnames';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import  SearchAutoSuggest from '../project/projectSearchAutoSuggest';
+import { match } from 'react-router';
+import ProjectSearchForm from '../project/projectSearchForm';
 
 
 const styles = (theme: Theme) => createStyles({
@@ -18,17 +20,21 @@ const styles = (theme: Theme) => createStyles({
     fontSize: theme.typography.fontSize * 1.3,//.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
+  search: {
+    padding: '0px 10px 0px 10px'
+  },
 });
 
 
 
-function ProjectComponent(props: WithStyles<typeof styles>) {
-  const { classes } = props;
-
+function ProjectComponent(props: WithStyles<typeof styles>&{match: match<{tag:string}>}) {
+  const { classes, match } = props;
+  // debugger;
+  
   return (
     <div className={classes.root  }>
       <Grid container spacing={24} alignItems="center" alignContent="center" justify="center" >
-        <Grid item xs={12} sm={11} md={10} lg={9} xl={8}>
+        <Grid item xs={12} lg={10} >
           <ExpansionPanel defaultExpanded={true}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.heading}>Open Source Projects of mine</Typography>
@@ -40,26 +46,22 @@ function ProjectComponent(props: WithStyles<typeof styles>) {
                 <p>In general these projects are written with JavaScript and run in the browser or in Node.js, but there are a few that are written in other programming languages. </p>
                 <p>Because there are several, I've created this form to track them and give an idea of the whole thing. </p>
               </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        </Grid>
+            {/* </ExpansionPanelDetails>
+          </ExpansionPanel> */}
+        {/* </Grid> */}
 
-        <Grid item xs={12} sm={11} md={10} lg={9} xl={8}>
-          <ExpansionPanel defaultExpanded={true}>
+        {/* <Grid item xs={12} sm={11} md={10} lg={9} xl={8}> */}
+          {/* <ExpansionPanel defaultExpanded={true}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.heading}>Search</Typography>
             </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Search tags
-                <SearchAutoSuggest mode="tag"/>
-              </Typography>
+            <ExpansionPanelDetails> */}
 
-              <Typography>
-                Search projects
-                <SearchAutoSuggest mode="project"/>
-              </Typography>
-              <Typography>
+            {/* {new ProjectSearchForm(props)} */}
+            <ProjectSearchForm  {...props}/>
+            {/* {match && match.params && match.params.tag ? `Filtering by ${match.params.tag} tag` : projectSearchForm(props)} */}
+            
+              {/* <Typography>
                 Search tags sectioned
                 <SearchAutoSuggest mode="tagSectioned"/>
               </Typography>
@@ -67,7 +69,7 @@ function ProjectComponent(props: WithStyles<typeof styles>) {
               <Typography>
                 Search projects sectioned
                 <SearchAutoSuggest mode="projectSectioned"/>
-              </Typography>
+              </Typography> */}
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </Grid>

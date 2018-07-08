@@ -62,7 +62,7 @@ function Projects(props: WithStyles<typeof styles> & { project: Project }) {
                     clickable
                     label={lib}
                     className={classes.chip}
-                    component={(props: ChipProps & LinkProps) => <Link to={"/projects?filterByTag=" + lib} {...props} />} />
+                    component={(props: ChipProps & LinkProps) => <Link to={"/projects/tag/" + lib} {...props} />} />
                 )}
               </Typography>
             </p>
@@ -73,7 +73,7 @@ function Projects(props: WithStyles<typeof styles> & { project: Project }) {
                     clickable
                     label={tag}
                     className={classes.chip}
-                    component={(props: ChipProps & LinkProps) => <Link to={"/projects?filterByTag=" + tag} {...props} />} />
+                    component={(props: ChipProps & LinkProps) => <Link to={"/projects/tag/" + tag} {...props} />} />
                 )}
               </Typography>
             </p>

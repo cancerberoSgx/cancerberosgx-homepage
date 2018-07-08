@@ -21,21 +21,17 @@ const styles = (theme: Theme) => createStyles({
     fontSize: theme.typography.fontSize * 1.4,
     color: theme.palette.primary.main
   },
-
   'react-autosuggest__container': {
     position: 'relative',
   },
-
   'react-autosuggest__input': {
     width: 240,
     height: 30,
     padding: '10px 20px',
   },
-
   'react-autosuggest__suggestions-container': {
     display: 'none',
   },
-
   'react-autosuggest__suggestions-container--open': {
     display: 'block',
     position: 'absolute',
@@ -44,66 +40,33 @@ const styles = (theme: Theme) => createStyles({
     border: '1px solid #aaa',
     zIndex: 2,
   },
-
   'react-autosuggest__suggestion': {
     cursor: 'pointer',
     padding: '10px 20px',
   },
-
   'react-autosuggest__suggestion--highlighted': {
     backgroundColor: '#ddd'
   },
-
   'react-autosuggest__section-title': {
     padding: '10px 0 0 10px',
     fontSize: 12,
     color: '#777',
   },
   highlight: {
-    fontWeight: 500
+    fontWeight: 800
   },
   nonhighlight: {
     fontWeight: 300
   },
   menuItem: {
-    padding: 0
+    padding: '0px 6px 0px 6px'
   }
 })
 
 
-// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
-function escapeRegexCharacters(str: string) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-}
 
 
-
-function getSuggestionValue(suggestion: TagSuggestion) {
-  return suggestion.name
-}
-
-
-function renderSectionTitle(section: TagSection) {
-  return (
-    <strong>{section.title}</strong>
-  )
-}
-
-function getSectionSuggestions(section: TagSection) {
-  return section.languages
-}
-
-function renderSuggestionsContainer(options: { containerProps: any, children: any }) {
-  const { containerProps, children } = options
-  return (
-    <Paper {...containerProps} square>
-      {children}
-    </Paper>
-  )
-}
-
-
-class Auto1 extends React.Component<WithStyles<typeof styles> & { mode: 'project' | 'tag'|'projectSectioned'|'tagSectioned' }, { value: string, suggestions: TagSection[] }> {
+class ProjectSearchAutoSuggest extends React.Component<WithStyles<typeof styles> & { mode: 'project' | 'tag'|'projectSectioned'|'tagSectioned' }, { value: string, suggestions: TagSection[] }> {
   constructor(props: WithStyles<typeof styles> & { mode: 'project' | 'tag'|'projectSectioned'|'tagSectioned' }) {
     super(props)
     this.state = {
@@ -157,53 +120,55 @@ class Auto1 extends React.Component<WithStyles<typeof styles> & { mode: 'project
     const sections: TagSection[] = []
     if(this.props.mode==='project') {
       // const projects = (projectByTt as any)[tagType][tag].filter((p: Project) => p.name.includes(escapedValue))
-      if(projects.length){
-        sections.push({ title: 'Al Projects', languages: projects })
+      const matchProjects = projects.filter((p: Project) => p.name.includes(escapedValue))
+      if(matchProjects.length){
+        sections.push({ title: 'Al Projects', projects: matchProjects })
       }
-      return sections
+      else {
+        sections.push({ title: `No projects match for "${escapedValue}"` , projects: [] })
+      }
+      // return sections
     }
 
-    if(this.props.mode==='tag'){
+    else if(this.props.mode==='tag'){
       Object.keys(projectByTt).forEach(tagType => {
         // Object.keys(projectByTt[tagType]).forEach((tag: string) => {
           // if(tag.includes(escapedValue)){
             const matchingTags = Object.keys(projectByTt[tagType]).filter(t=>t.includes(escapedValue)).map(t=>({name: t}))
             if(matchingTags.length){
-              sections.push({ title: tagType , languages: matchingTags })
-
+              sections.push({ title: tagType , projects: matchingTags })
+            }
+            else {
+              sections.push({ title: `No tags match for "${escapedValue}"` , projects: [] })
             }
           // }
         // })
       })
     }
-    Object.keys(projectByTt).forEach(tagType => {
-      Object.keys(projectByTt[tagType]).forEach((tag: string) => {
-        // debugger
-        if (this.props.mode === 'tagSectioned') {
-
-          const projects = (projectByTt as any)[tagType][tag].filter((p: any) => p[tagType].find((tag: any) => tag.includes(escapedValue)))
-          if (projects.length) {
-            projects.forEach((p: any) => {
-              sections.push({
-                title: p.name,
-                languages: p[tagType].filter((tag: any) => tag.includes(escapedValue)).map((tag: string) => ({
-                  name: (tag + ' ('+tagType+')')
-                }))
-              })
-            })
-          }
-
-        }
-        else if(this.props.mode==='projectSectioned') {
-          const projects = (projectByTt as any)[tagType][tag].filter((p: Project) => p.name.includes(escapedValue))
-          if(projects.length){
-            sections.push({ title: tagType + ': ' + tag, languages: projects })
-          }
-        }
-      })
-    }) 
-    
-   
+    // Object.keys(projectByTt).forEach(tagType => {
+    //   Object.keys(projectByTt[tagType]).forEach((tag: string) => {
+    //     // debugger
+    //     if (this.props.mode === 'tagSectioned') {
+    //       const projects = (projectByTt as any)[tagType][tag].filter((p: any) => p[tagType].find((tag: any) => tag.includes(escapedValue)))
+    //       if (projects.length) {
+    //         projects.forEach((p: any) => {
+    //           sections.push({
+    //             title: p.name,
+    //             languages: p[tagType].filter((tag: any) => tag.includes(escapedValue)).map((tag: string) => ({
+    //               name: (tag + ' ('+tagType+')')
+    //             }))
+    //           })
+    //         })
+    //       }
+    //     }
+    //     else if(this.props.mode==='projectSectioned') {
+    //       const projects = (projectByTt as any)[tagType][tag].filter((p: Project) => p.name.includes(escapedValue))
+    //       if(projects.length){
+    //         sections.push({ title: tagType + ': ' + tag, languages: projects })
+    //       }
+    //     }
+    //   })
+    // }) 
     return sections
   }
   render() {
@@ -230,7 +195,7 @@ class Auto1 extends React.Component<WithStyles<typeof styles> & { mode: 'project
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Auto1)
+export default withStyles(styles, { withTheme: true })(ProjectSearchAutoSuggest)
 
 
 interface TagSuggestion {
@@ -239,5 +204,31 @@ interface TagSuggestion {
 }
 interface TagSection {
   title: string,
-  languages: TagSuggestion[]
+  projects: TagSuggestion[]
+}
+
+
+
+// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
+function escapeRegexCharacters(str: string) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+function getSuggestionValue(suggestion: TagSuggestion) {
+  return suggestion.name
+}
+function renderSectionTitle(section: TagSection) {
+  return (
+    <strong>{section.title}</strong>
+  )
+}
+function getSectionSuggestions(section: TagSection) {
+  return section.projects
+}
+function renderSuggestionsContainer(options: { containerProps: any, children: any }) {
+  const { containerProps, children } = options
+  return (
+    <Paper {...containerProps} square>
+      {children}
+    </Paper>
+  )
 }
