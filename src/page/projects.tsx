@@ -51,8 +51,22 @@ function ProjectComponent(props: WithStyles<typeof styles>) {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Typography>
-                search form
-                <Auto1/>
+                Search tags
+                <Auto1 mode="tag"/>
+              </Typography>
+
+              <Typography>
+                Search projects
+                <Auto1 mode="project"/>
+              </Typography>
+              <Typography>
+                Search tags sectioned
+                <Auto1 mode="tagSectioned"/>
+              </Typography>
+
+              <Typography>
+                Search projects sectioned
+                <Auto1 mode="projectSectioned"/>
               </Typography>
             </ExpansionPanelDetails>
           </ExpansionPanel>
@@ -60,7 +74,7 @@ function ProjectComponent(props: WithStyles<typeof styles>) {
 
       </Grid>
 
-      <Grid container spacing={24} alignItems="stretch">
+      <Grid container spacing={24} alignItems="stretch" alignContent="flex-end" justify="flex-end" >
         {projects.map(project =>
           <Grid item xs={12} sm={6} lg={4}>
             <Project project={project} />

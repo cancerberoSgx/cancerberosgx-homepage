@@ -1,32 +1,6 @@
 import { lightBaseTheme } from 'material-ui/styles';
+import { Project, language, runtime, libraries, experticeArea, projectCharacteristic } from './projectMetadata';
 
-export enum experticeArea {
-  parser = "parser", documentation = "documentation", editorsAndIDEs = 'editorsAndIDEs', pluginsAndExtensibility = 'pluginsAndExtensibility', stringManipulation = 'stringManipulation', utilities = 'utilities', devtools = 'devtools', instrumentation='instrumentation', testing="testing", APIdesign='APIdesign', designPatterns='designPatterns'
-}
-export enum language {
-  JavaScript = "JavaScript", TypeScript = "TypeScript", Java = 'Java', bash='bash', html='html', css='css'
-}
-export enum runtime {
-  TypeScriptLanguageService = 'TypeScriptTypeScriptLanguageService', browser = "browser", NodeJs = "NodeJs", jvm = "jvm", vscode = "vscode"
-}
-export enum lib {
-  TypeScript = 'TypeScript', angular = 'angular', react = 'react', express = 'express', esprima = 'esprima', grunt = 'grunt', browserify = 'browserify', monacoEditor = 'monacoEditor', bootstrap = 'bootstrap', lerna='lerna', yarn='yarn', shelljs='shelljs', jsdoc='jsdoc', eslint="eslint", prettier="prettier"
-}
-export enum projectCharacteristic {
-  smallSize = 'smallSize', mediumSize = 'mediumSize', bigSize = 'bigSize', bigComplexity = 'bigComplexity', smallComplexity = 'smallComplexity', goodQuality = 'goodQuality', poorQuality = 'poorQuality', mediumQuality = 'mediumQuality', useful = "useful", useless = "useless", moreOrLessUseful = "moreOrLessUseful", research = "research", mediumComplexity='mediumComplexity', library='library', commandLineInterface='commandLineInterface', framework='framework', game='game'
-}
-
-export interface Project {
-  name: string
-  description: string
-  repositoryUrl: string
-  projectPage?: string
-  language: language[]
-  runtime: runtime[]
-  libraries: lib[]
-  area: experticeArea[],
-  projectCharacteristic: projectCharacteristic[]
-}
 
 export const projects: Project[] = [
   {
@@ -36,8 +10,8 @@ export const projects: Project[] = [
     "projectPage": "http://cancerberosgx.github.io/short-jsdoc/doc/guide/",
     "language": [language.JavaScript],
     "runtime": [runtime.NodeJs, runtime.browser],
-    "libraries": [lib.esprima, lib.grunt, lib.browserify, lib.lerna],
-    "area": [
+    "libraries": [libraries.esprima, libraries.grunt, libraries.browserify, libraries.lerna],
+    "experticeArea": [
       experticeArea.parser, experticeArea.documentation
     ],
     projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.useful, projectCharacteristic.goodQuality],
@@ -49,8 +23,8 @@ export const projects: Project[] = [
     "repositoryUrl": "https://github.com/cancerberoSgx/typescript-plugins-of-mine/",
     "language": [language.TypeScript, language.JavaScript],
     "runtime": [runtime.TypeScriptLanguageService, runtime.NodeJs],
-    "libraries": [lib.angular, lib.grunt, lib.browserify],
-    "area": [
+    "libraries": [libraries.angular, libraries.grunt, libraries.browserify],
+    "experticeArea": [
       experticeArea.parser, experticeArea.editorsAndIDEs, experticeArea.pluginsAndExtensibility, experticeArea.devtools, experticeArea.APIdesign, experticeArea.utilities
     ],
     projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.mediumQuality, projectCharacteristic.library, projectCharacteristic.useful]
@@ -63,8 +37,8 @@ export const projects: Project[] = [
     "projectPage": "http://cancerberosgx.github.io/short-jsdoc/doc/guide/",
     "language": [language.TypeScript],
     "runtime": [runtime.NodeJs],
-    "libraries": [lib.lerna],
-    "area": [
+    "libraries": [libraries.lerna],
+    "experticeArea": [
       experticeArea.testing
     ],
     projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.useful, projectCharacteristic.goodQuality, projectCharacteristic.commandLineInterface],
@@ -77,7 +51,7 @@ export const projects: Project[] = [
     "language": [language.TypeScript],
     "runtime": [runtime.NodeJs, runtime.browser],
     "libraries": [],
-    "area": [
+    "experticeArea": [
       experticeArea.APIdesign, experticeArea.designPatterns
     ],
     projectCharacteristic: [projectCharacteristic.smallSize, projectCharacteristic.mediumComplexity, projectCharacteristic.useful, projectCharacteristic.goodQuality, projectCharacteristic.library],
@@ -90,11 +64,11 @@ export const projects: Project[] = [
     projectPage: 'https://cancerberosgx.github.io/perplexed-wars/build/',
     "language": [language.TypeScript, language.html, language.css],
     "runtime": [runtime.browser],
-    "libraries": [lib.react],
-    "area": [
+    "libraries": [libraries.react],
+    "experticeArea": [
       experticeArea.APIdesign, experticeArea.designPatterns
     ],
-    projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.moreOrLessUseful, projectCharacteristic.mediumQuality, projectCharacteristic.library, projectCharacteristic.framework, projectCharacteristic.game],
+    projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.moreOrLessUseful, projectCharacteristic.mediumQuality, projectCharacteristic.library, projectCharacteristic.game],
   },
 
  
@@ -107,8 +81,8 @@ export const projects: Project[] = [
     "repositoryUrl": "https://github.com/cancerberoSgx/typescript-plugins-of-mine/",
     "language": [language.TypeScript, language.html, language.css],
     "runtime": [runtime.browser, runtime.NodeJs, runtime.TypeScriptLanguageService],
-    "libraries": [lib.TypeScript, lib.monacoEditor, lib.bootstrap],
-    "area": [
+    "libraries": [libraries.TypeScript, libraries.monacoEditor, libraries.bootstrap],
+    "experticeArea": [
       experticeArea.parser, experticeArea.editorsAndIDEs, experticeArea.pluginsAndExtensibility, experticeArea.documentation
     ],
     projectCharacteristic: [projectCharacteristic.mediumSize, projectCharacteristic.bigComplexity, projectCharacteristic.mediumQuality]
@@ -122,8 +96,8 @@ export const projects: Project[] = [
     "repositoryUrl": "https://github.com/cancerberoSgx/yamat",
     "language": [language.TypeScript],
     "runtime": [runtime.NodeJs],
-    "libraries": [lib.shelljs],
-    "area": [
+    "libraries": [libraries.shelljs],
+    "experticeArea": [
       experticeArea.devtools
     ],
     projectCharacteristic: [projectCharacteristic.mediumSize, projectCharacteristic.mediumComplexity, projectCharacteristic.useful, projectCharacteristic.goodQuality],
@@ -136,7 +110,7 @@ export const projects: Project[] = [
     "language": [language.TypeScript],
     "runtime": [runtime.NodeJs],
     "libraries": [],
-    "area": [
+    "experticeArea": [
       experticeArea.APIdesign
     ],
     projectCharacteristic: [projectCharacteristic.smallSize, projectCharacteristic.smallComplexity, projectCharacteristic.useful, projectCharacteristic.goodQuality, projectCharacteristic.library],
@@ -149,7 +123,7 @@ export const projects: Project[] = [
     "language": [language.TypeScript],
     "runtime": [runtime.NodeJs, runtime.browser],
     "libraries": [],
-    "area": [
+    "experticeArea": [
       experticeArea.APIdesign
     ],
     projectCharacteristic: [projectCharacteristic.smallSize, projectCharacteristic.smallComplexity, projectCharacteristic.useful, projectCharacteristic.goodQuality, projectCharacteristic.library],
@@ -163,8 +137,8 @@ export const projects: Project[] = [
     "projectPage": "https://cancerberosgx.github.io/jsdoc-templates-demo/demo/",
     "language": [language.JavaScript, language.bash],
     "runtime": [runtime.NodeJs, runtime.browser],
-    "libraries": [lib.jsdoc],
-    "area": [experticeArea.documentation, experticeArea.devtools],
+    "libraries": [libraries.jsdoc],
+    "experticeArea": [experticeArea.documentation, experticeArea.devtools],
     "projectCharacteristic": [projectCharacteristic.mediumSize, projectCharacteristic.smallComplexity, projectCharacteristic.poorQuality]
   },
 
@@ -175,8 +149,8 @@ export const projects: Project[] = [
     "projectPage": "https://cancerberosgx.github.io/prettier-eslint-gallery/gallery/",
     "language": [language.JavaScript, language.html, language.css],
     "runtime": [runtime.NodeJs],
-    "libraries": [lib.eslint, lib.prettier],
-    "area": [experticeArea.documentation, experticeArea.devtools, experticeArea.APIdesign, experticeArea.pluginsAndExtensibility, experticeArea.utilities],
+    "libraries": [libraries.eslint, libraries.prettier],
+    "experticeArea": [experticeArea.documentation, experticeArea.devtools, experticeArea.APIdesign, experticeArea.pluginsAndExtensibility, experticeArea.utilities],
     "projectCharacteristic": [projectCharacteristic.mediumSize, projectCharacteristic.mediumComplexity, projectCharacteristic.mediumQuality]
   },
 
@@ -189,7 +163,7 @@ export const projects: Project[] = [
     "language": [language.JavaScript],
     "runtime": [runtime.NodeJs],
     "libraries": [],
-    "area": [experticeArea.devtools],
+    "experticeArea": [experticeArea.devtools],
     projectCharacteristic: [projectCharacteristic.smallSize, projectCharacteristic.smallComplexity, projectCharacteristic.goodQuality]
   },
   {
@@ -199,7 +173,7 @@ export const projects: Project[] = [
     "language": [language.JavaScript],
     "runtime": [runtime.NodeJs, runtime.browser],
     "libraries": [],
-    "area": [experticeArea.documentation, experticeArea.devtools],
+    "experticeArea": [experticeArea.documentation, experticeArea.devtools],
     projectCharacteristic: [projectCharacteristic.mediumSize, projectCharacteristic.smallComplexity, projectCharacteristic.poorQuality]
   },
 
@@ -212,8 +186,8 @@ export const projects: Project[] = [
     "projectPage": "http://cancerberosgx.github.io/string-utilities/",
     "language": [language.JavaScript],
     "runtime": [runtime.browser],
-    "libraries": [lib.angular, lib.grunt, lib.browserify],
-    "area": [
+    "libraries": [libraries.angular, libraries.grunt, libraries.browserify],
+    "experticeArea": [
       experticeArea.stringManipulation, experticeArea.utilities,
     ],
     projectCharacteristic: [projectCharacteristic.mediumSize, projectCharacteristic.smallComplexity, projectCharacteristic.mediumQuality]

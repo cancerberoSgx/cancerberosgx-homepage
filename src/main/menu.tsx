@@ -8,10 +8,6 @@ import * as React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { Button, List, ListItem, Avatar, ListItemText } from '@material-ui/core';
 import { ButtonProps } from '@material-ui/core/Button';
-
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/Work';
 import contributionsIcon from '../icon/contributionsIcon';
 import projectsIcon from '../icon/projectsIcon';
 import technologiesIcon from '../icon/technologiesIcon';

@@ -12,6 +12,6 @@ module.exports = merge(common, {
     })
   ],
    devServer: {
-     contentBase: './docs-dev'
+     contentBase: './docs'
    }
  });

@@ -2,11 +2,11 @@
   "name": "cancerberosgx-hompage",
   "version": "1.0.0",
   "description": "Sebastian Gurin (cancerberosgx) home page",
-  "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js && npm run static",
     "start": "webpack-dev-server --config webpack.dev.js --open",
-    "test": "jest"
+    "static": "cp -r src/assets docs/assets",
+    "test": "rm -rf dist && jest"
   },
   "keywords": [],
   "author": "Sebastian Gurin",
@@ -61,7 +61,12 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.tsx?$": "ts-jest"
+      "^.+\\.(ts|tsx)$": "ts-jest"  
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
