@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js && npm run static",
     "start": "webpack-dev-server --config webpack.dev.js --open",
-    "static": "cp -r src/assets docs/assets && cp -rf CNAME docs",
+    "static": "cp -r src/assets docs/assets && cp -rf CNAME docs && ts-node scripts/bundleJsDynParam.ts",
     "test": "rm -rf dist && jest"
   },
   "keywords": [],
