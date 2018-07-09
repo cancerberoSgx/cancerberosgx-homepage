@@ -44,7 +44,7 @@ function page1(props: WithStyles<typeof styles>) {
         <Card className={classes.card}>
           <CardMedia
             className={classes.media}
-            image='me.png'
+            image='https://avatars1.githubusercontent.com/u/112746?s=460&v=4'
             title="Contemplative Reptile"
           />
           <CardContent>
