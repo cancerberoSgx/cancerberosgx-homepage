@@ -1,16 +1,8 @@
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const merge = require('webpack-merge')
+const common = require('./webpack.common.js')
 module.exports = merge(common, {
    mode: 'development',
-   devtool: 'inline-source-map', 
-   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      showErrors: true
-    })
-  ],
+   devtool: 'inline-source-map',
    devServer: {
      contentBase: './docs'
    }
