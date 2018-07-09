@@ -11,9 +11,7 @@ export const projects: Project[] = [
     "language": [language.JavaScript],
     "runtime": [runtime.NodeJs, runtime.browser],
     "libraries": [libraries.esprima, libraries.grunt, libraries.browserify, libraries.lerna],
-    "experticeArea": [
-      experticeArea.parser, experticeArea.documentation
-    ],
+    "experticeArea": [experticeArea.parser, experticeArea.documentation],
     projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.useful, projectCharacteristic.goodQuality],
   },
 

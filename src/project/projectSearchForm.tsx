@@ -7,8 +7,10 @@ import { projects } from '../project/projectData';
 import Project from '../project/project'
 import * as classNames from 'classnames';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import  SearchAutoSuggest from '../project/projectSearchAutoSuggest';
+import SearchAutoSuggest from '../project/projectSearchAutoSuggest';
 import { match } from 'react-router';
+import { Link, LinkProps } from 'react-router-dom';
+import { ButtonProps } from '@material-ui/core/Button';
 
 
 const styles = (theme: Theme) => createStyles({
@@ -18,23 +20,30 @@ const styles = (theme: Theme) => createStyles({
   },
 });
 
-const projectSearchForm = (props: WithStyles<typeof styles>&{match: match<{tag:string}>}) => {
+const projectSearchForm = (props: WithStyles<typeof styles> & { match: match<{ tag: string , project: string}> }) => {
   const { classes } = props;
-  if(props.match.params.tag){
-    return <p>`Filtering by ${props.match.params.tag} tag` </p>
-  }
+  // if (props.match.params.tag || props.match.params.project) {
+  //   return <p>Filtering by {props.match.params.tag ? 'tag' : props.match.params.project ? 'project' : ''} containing "{props.match.params.tag || props.match.params.project}". <Button component={(props: ButtonProps & LinkProps) => <Link to="/projects" {...props} />}>Clear Filters</Button> </p>
+  // }
   return (
-  <div className={classes.search}>
-  <Typography>
-  Search tags
-  <SearchAutoSuggest mode="tag"/>
-  </Typography>
-  
-  <Typography >
-  Search projects
-  <SearchAutoSuggest mode="project"/>
-  </Typography>
-  </div>)
+    <Grid container spacing={24} className={classes.search}>
+      {((props.match.params.tag || props.match.params.project ) ? [1] : []).map(a=>
+      <Grid item xs={12}>Filtering by {props.match.params.tag ? 'tag' : props.match.params.project ? 'project' : ''} containing "{props.match.params.tag || props.match.params.project}". <Button component={(props: ButtonProps & LinkProps) => <Link to="/projects" {...props} />}>Clear Filters</Button></Grid >
+      )}
+      <Grid item xs={12} sm={6} >
+        <Typography>
+          Search tags: 
+          <SearchAutoSuggest mode="tag" />
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sm={6} >
+        <Typography >
+          Search projects: 
+          <SearchAutoSuggest mode="project" />
+        </Typography>
+      </Grid>
+    </Grid>
+  )
 }
 
 export default withStyles(styles, { withTheme: true })(projectSearchForm);

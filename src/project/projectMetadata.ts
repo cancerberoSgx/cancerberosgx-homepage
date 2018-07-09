@@ -18,7 +18,7 @@ export enum projectCharacteristic {
 export type allTags = experticeArea & language & runtime & libraries & projectCharacteristic
 
 export enum tagType {
-  projectCharacteristic = 'Project Characteristic', experticeArea = 'Expertice Area', language = 'Programming Language', runtime = 'Runtime', lib = 'Libraries used'
+  projectCharacteristic = 'Project Characteristic', experticeArea = 'Expertice Area', language = 'Programming Language', runtime = 'Runtime', libraries = 'Libraries used'
 }
 export const tagTypeMap = {
   projectCharacteristic: projectCharacteristic, experticeArea: experticeArea, language: language, runtime: runtime, libraries: libraries
@@ -45,19 +45,19 @@ export function getProjectsByTagGroup(): { [key in tagType]: { [key in allTags]:
   for (let tt in tagType) {
     result[tt] = result[tt] || {}
     for (let tag in (tagTypeMap as any)[tt]) {
-      // console.log(tt, tag);
-      
-      result[tt][tag] = (projects as any[]).filter(p => {if(!p[tt]){debugger} return p[tt].includes(tag)})
+      result[tt][tag] = (projects as any[]).filter(p => {return p[tt].includes(tag)})
     }
-  } projectByTagGroup = result
+  } 
+  projectByTagGroup = result
   return result
 }
 
-// const projectCharacteristicNameMap: {[key: string]: string} = {
-//   smallSize: 'Small size', 
-//   commandLineInterface: 'Command Line Interface'
-// }
-// export function getProjectCharacteristicName(value: string): string{
-//   return value//projectCharacteristicNameMap[value]
-// }
-
+export function getProjectAllTags(p: Project): {tagType: string, tag: string}[] {
+  const all = []
+  for (let tt in tagType) {
+    for (let tag in (p as any)[tt]) {
+      all.push({tagType: tt, tag: (p as any)[tt][tag]})
+    }
+  }
+  return all
+}

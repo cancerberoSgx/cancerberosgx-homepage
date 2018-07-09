@@ -7,9 +7,10 @@ import { projects } from '../project/projectData';
 import Project from '../project/project'
 import * as classNames from 'classnames';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import  SearchAutoSuggest from '../project/projectSearchAutoSuggest';
+import SearchAutoSuggest from '../project/projectSearchAutoSuggest';
 import { match } from 'react-router';
 import ProjectSearchForm from '../project/projectSearchForm';
+import { tagType, getProjectAllTags } from '../project/projectMetadata';
 
 
 const styles = (theme: Theme) => createStyles({
@@ -27,12 +28,19 @@ const styles = (theme: Theme) => createStyles({
 
 
 
-function ProjectComponent(props: WithStyles<typeof styles>&{match: match<{tag:string}>}) {
+function ProjectComponent(props: WithStyles<typeof styles> & { match: match<{ tag: string, project: string }> }) {
   const { classes, match } = props;
-  // debugger;
+  let results = projects
+  // console.log(props.match.params);
   
+  if(props.match.params.tag){
+    results = projects.filter(p => getProjectAllTags(p).find(t => t.tag.includes(props.match.params.tag)))
+  }
+  else  if(props.match.params.project){
+    results = projects.filter(p => p.name.includes(props.match.params.project))
+  }
   return (
-    <div className={classes.root  }>
+    <div className={classes.root}>
       <Grid container spacing={24} alignItems="center" alignContent="center" justify="center" >
         <Grid item xs={12} lg={10} >
           <ExpansionPanel defaultExpanded={true}>
@@ -46,38 +54,24 @@ function ProjectComponent(props: WithStyles<typeof styles>&{match: match<{tag:st
                 <p>In general these projects are written with JavaScript and run in the browser or in Node.js, but there are a few that are written in other programming languages. </p>
                 <p>Because there are several, I've created this form to track them and give an idea of the whole thing. </p>
               </Typography>
-            {/* </ExpansionPanelDetails>
-          </ExpansionPanel> */}
-        {/* </Grid> */}
-
-        {/* <Grid item xs={12} sm={11} md={10} lg={9} xl={8}> */}
-          {/* <ExpansionPanel defaultExpanded={true}>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className={classes.heading}>Search</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails> */}
-
-            {/* {new ProjectSearchForm(props)} */}
-            <ProjectSearchForm  {...props}/>
-            {/* {match && match.params && match.params.tag ? `Filtering by ${match.params.tag} tag` : projectSearchForm(props)} */}
-            
-              {/* <Typography>
-                Search tags sectioned
-                <SearchAutoSuggest mode="tagSectioned"/>
-              </Typography>
-
-              <Typography>
-                Search projects sectioned
-                <SearchAutoSuggest mode="projectSectioned"/>
-              </Typography> */}
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </Grid>
-
+        <Grid item xs={12} lg={10} >
+        <ExpansionPanel defaultExpanded={true}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography className={classes.heading}>Search</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+      <ProjectSearchForm  {...props} />
+            </ExpansionPanelDetails>
+            </ExpansionPanel>
+        </Grid>
       </Grid>
 
-      <Grid container spacing={24} alignItems="stretch" alignContent="flex-end" justify="flex-end" >
-        {projects.map(project =>
+
+      <Grid container spacing={24} alignItems="stretch">
+        {results.map(project =>
           <Grid item xs={12} sm={6} lg={4}>
             <Project project={project} />
           </Grid>
@@ -86,6 +80,5 @@ function ProjectComponent(props: WithStyles<typeof styles>&{match: match<{tag:st
     </div>
   );
 }
-
 
 export default withStyles(styles, { withTheme: true })(ProjectComponent);

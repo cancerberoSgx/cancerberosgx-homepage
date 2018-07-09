@@ -7,6 +7,10 @@ import * as Autosuggest from 'react-autosuggest';
 import { ChangeEvent } from 'react-autosuggest';
 import { getProjectsByTagGroup, Project } from './projectMetadata';
 import { projects } from './projectData';
+import Button, { ButtonProps } from '@material-ui/core/Button';
+import { LinkProps, Link } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { history } from '..';
 const match = require('autosuggest-highlight/match')
 const parse = require('autosuggest-highlight/parse')
 
@@ -64,8 +68,6 @@ const styles = (theme: Theme) => createStyles({
 })
 
 
-
-
 class ProjectSearchAutoSuggest extends React.Component<WithStyles<typeof styles> & { mode: 'project' | 'tag'|'projectSectioned'|'tagSectioned' }, { value: string, suggestions: TagSection[] }> {
   constructor(props: WithStyles<typeof styles> & { mode: 'project' | 'tag'|'projectSectioned'|'tagSectioned' }) {
     super(props)
@@ -75,6 +77,8 @@ class ProjectSearchAutoSuggest extends React.Component<WithStyles<typeof styles>
     }
   }
   onChange = (event: ChangeEvent, { newValue, method }: { newValue: string, method: any }) => {
+    // console.log('push: '+`/projects/${this.props.mode}/${newValue}`);
+    history.push(`/projects/${this.props.mode}/${newValue}`, {some: 'state'})
     this.setState({
       value: newValue
     })
@@ -93,8 +97,8 @@ class ProjectSearchAutoSuggest extends React.Component<WithStyles<typeof styles>
     const { classes, theme } = this.props
     const matches = match(suggestion.name, query)
     const parts: { text: string, highlight: boolean }[] = parse(suggestion.name, matches)
-    // console.log(({name: suggestion.name, parts}))
     return (
+      <Button component={(props: ButtonProps & LinkProps) => <Link to={`/projects/${this.props.mode}/${suggestion.name}`} {...props} />}>
       <MenuItem selected={isHighlighted}className={classes.menuItem}>
         {parts.map((part, index) => part.highlight ? (
           <span key={String(index)} className={classNames(classes.highlight)}>
@@ -107,6 +111,7 @@ class ProjectSearchAutoSuggest extends React.Component<WithStyles<typeof styles>
           )
         )}
       </MenuItem>
+      </Button>
     )
   }
 
@@ -119,7 +124,6 @@ class ProjectSearchAutoSuggest extends React.Component<WithStyles<typeof styles>
     }
     const sections: TagSection[] = []
     if(this.props.mode==='project') {
-      // const projects = (projectByTt as any)[tagType][tag].filter((p: Project) => p.name.includes(escapedValue))
       const matchProjects = projects.filter((p: Project) => p.name.includes(escapedValue))
       if(matchProjects.length){
         sections.push({ title: 'Al Projects', projects: matchProjects })
@@ -127,13 +131,10 @@ class ProjectSearchAutoSuggest extends React.Component<WithStyles<typeof styles>
       else {
         sections.push({ title: `No projects match for "${escapedValue}"` , projects: [] })
       }
-      // return sections
     }
 
     else if(this.props.mode==='tag'){
       Object.keys(projectByTt).forEach(tagType => {
-        // Object.keys(projectByTt[tagType]).forEach((tag: string) => {
-          // if(tag.includes(escapedValue)){
             const matchingTags = Object.keys(projectByTt[tagType]).filter(t=>t.includes(escapedValue)).map(t=>({name: t}))
             if(matchingTags.length){
               sections.push({ title: tagType , projects: matchingTags })
@@ -141,34 +142,8 @@ class ProjectSearchAutoSuggest extends React.Component<WithStyles<typeof styles>
             else {
               sections.push({ title: `No tags match for "${escapedValue}"` , projects: [] })
             }
-          // }
-        // })
       })
     }
-    // Object.keys(projectByTt).forEach(tagType => {
-    //   Object.keys(projectByTt[tagType]).forEach((tag: string) => {
-    //     // debugger
-    //     if (this.props.mode === 'tagSectioned') {
-    //       const projects = (projectByTt as any)[tagType][tag].filter((p: any) => p[tagType].find((tag: any) => tag.includes(escapedValue)))
-    //       if (projects.length) {
-    //         projects.forEach((p: any) => {
-    //           sections.push({
-    //             title: p.name,
-    //             languages: p[tagType].filter((tag: any) => tag.includes(escapedValue)).map((tag: string) => ({
-    //               name: (tag + ' ('+tagType+')')
-    //             }))
-    //           })
-    //         })
-    //       }
-    //     }
-    //     else if(this.props.mode==='projectSectioned') {
-    //       const projects = (projectByTt as any)[tagType][tag].filter((p: Project) => p.name.includes(escapedValue))
-    //       if(projects.length){
-    //         sections.push({ title: tagType + ': ' + tag, languages: projects })
-    //       }
-    //     }
-    //   })
-    // }) 
     return sections
   }
   render() {
@@ -200,13 +175,11 @@ export default withStyles(styles, { withTheme: true })(ProjectSearchAutoSuggest)
 
 interface TagSuggestion {
   name: string,
-  // year: number 
 }
 interface TagSection {
   title: string,
   projects: TagSuggestion[]
 }
-
 
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters

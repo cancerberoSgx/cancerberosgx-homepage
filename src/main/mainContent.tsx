@@ -19,6 +19,7 @@ function main (props: WithStyles<typeof styles>) {
     <Switch>
       <Route exact path='/' component={home}/>
       <Route path='/projects/tag/:tag' component={projects}/>
+      <Route path='/projects/project/:project' component={projects}/>
       <Route path='/projects' component={projects}/>
       <Route path="*" component={home}/>
     </Switch>
