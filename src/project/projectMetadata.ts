@@ -1,16 +1,16 @@
 import { projects } from './projectData';
 
 export enum experticeArea {
-  parser = "parser", documentation = "documentation", editorsAndIDEs = 'editorsAndIDEs', pluginsAndExtensibility = 'pluginsAndExtensibility', stringManipulation = 'stringManipulation', utilities = 'utilities', devtools = 'devtools', instrumentation = 'instrumentation', testing = "testing", APIdesign = 'APIdesign', designPatterns = 'designPatterns'
+  parser = "parser", documentation = "documentation", editorsAndIDEs = 'editorsAndIDEs', pluginsAndExtensibility = 'pluginsAndExtensibility', stringManipulation = 'stringManipulation', tooling = 'tooling', devtools = 'devtools', instrumentation = 'instrumentation', testing = "testing", APIdesign = 'APIdesign', designPatterns = 'designPatterns', javascriptEngines='javascriptEngines', ui='ui'
 }
 export enum language {
   JavaScript = "JavaScript", TypeScript = "TypeScript", Java = 'Java', bash = 'bash', html = 'html', css = 'css'
 }
 export enum runtime {
-  TypeScriptLanguageService = 'TypeScriptTypeScriptLanguageService', browser = "browser", NodeJs = "NodeJs", jvm = "jvm", vscode = "vscode"
+  TypeScriptLanguageService = 'TypeScriptTypeScriptLanguageService', browser = "browser", NodeJs = "NodeJs", jvm = "jvm", vscode = "vscode", others='others'
 }
 export enum libraries {
-  TypeScript = 'TypeScript', angular = 'angular', react = 'react', express = 'express', esprima = 'esprima', grunt = 'grunt', browserify = 'browserify', monacoEditor = 'monacoEditor', bootstrap = 'bootstrap', lerna = 'lerna', yarn = 'yarn', shelljs = 'shelljs', jsdoc = 'jsdoc', eslint = "eslint", prettier = "prettier"
+  TypeScript = 'TypeScript', angular = 'angular', react = 'react', express = 'express', esprima = 'esprima', grunt = 'grunt', browserify = 'browserify', monacoEditor = 'monacoEditor', bootstrap = 'bootstrap', lerna = 'lerna', yarn = 'yarn', shelljs = 'shelljs', jsdoc = 'jsdoc', eslint = "eslint", prettier = "prettier", backbone='backbone'
 }
 export enum projectCharacteristic {
   smallSize = 'Small Size', mediumSize = 'Medium Size', bigSize = 'Big Size', bigComplexity = 'Complex', smallComplexity = 'Simple', goodQuality = 'Good Quality', poorQuality = 'Poor Quality', mediumQuality = 'Medium Quality', useful = "Useful", useless = "Useless", moreOrLessUseful = "More or less Useful", research = "Research", mediumComplexity = 'Somewhat complex', library = 'Library', commandLineInterface = 'Command Line Interface', game = 'Game'
@@ -21,7 +21,7 @@ export enum tagType {
   projectCharacteristic = 'Project Characteristic', experticeArea = 'Expertice Area', language = 'Programming Language', runtime = 'Runtime', libraries = 'Libraries used'
 }
 export const tagTypeMap = {
-  projectCharacteristic: projectCharacteristic, experticeArea: experticeArea, language: language, runtime: runtime, libraries: libraries
+  projectCharacteristic, experticeArea, language, runtime, libraries
 }
 
 export interface Project {

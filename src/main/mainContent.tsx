@@ -5,6 +5,7 @@ import projects from '../page/projects';
 import home from '../page/home';
 import contributions from '../page/contributions';
 import technologies from '../page/technologies';
+import expertice from '../page/expertice';
 
 const styles = (theme: Theme) => createStyles({
   root: {
@@ -25,6 +26,7 @@ function main (props: WithStyles<typeof styles>) {
       <Route path='/projects' component={projects}/>
       <Route path='/contributions' component={contributions}/>
       <Route path='/technologies' component={technologies}/>
+      <Route path='/expertice' component={expertice}/>
       <Route path="*" component={home}/>
     </Switch>
 

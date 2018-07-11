@@ -9,7 +9,7 @@ import theme from './theme';
 
 
 const generateClassName = createGenerateClassName();
-const jss = create(jssPreset());
+export const jss = create(jssPreset());
 
 export default function MyApp() {
   return (

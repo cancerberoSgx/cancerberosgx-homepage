@@ -34,7 +34,9 @@ const styles = (theme: Theme) => createStyles({
     ...theme.mixins.toolbar,
   }
 });
+
 const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDrawerClose: () => void }) => {
+  const closeMenu = () => setTimeout(mainProps.handleDrawerClose, 50)
   return <Drawer
     variant="persistent"
     anchor="left"
@@ -51,7 +53,7 @@ const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDr
     <Divider />
     <List>
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/" {...props} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/" {...props} onClick={closeMenu}/>} >
           <Avatar>
             {homeIcon()}
           </Avatar>
@@ -62,16 +64,16 @@ const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDr
       <Divider />
 
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/projects" {...props} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/projects" onClick={closeMenu}  {...props} />} >
           <Avatar>
             {projectsIcon()}
           </Avatar>
-          <ListItemText primary="Projects" secondary="Open Source Projects I've authored" onClick={mainProps.handleDrawerClose} />
+          <ListItemText primary="Projects" secondary="Open Source Projects I've authored" />
         </Button>
       </ListItem>
 
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/contributions" {...props} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/contributions" {...props} onClick={closeMenu}/>} >
           <Avatar>
           {contributionsIcon()}
           </Avatar>
@@ -80,7 +82,7 @@ const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDr
       </ListItem>
 
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/page2" {...props} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/technologies" {...props} onClick={closeMenu}/>} >
           <Avatar>{technologiesIcon()}
           </Avatar>
           <ListItemText primary="Technologies" secondary="Mastered technologies, programming languages, etc" />
@@ -88,7 +90,7 @@ const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDr
       </ListItem>
 
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/page2" {...props} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/expertice" {...props} onClick={closeMenu}/>} >
           <Avatar>{experticeIcon()}
           </Avatar>
           <ListItemText primary="Expertice" secondary="Areas of expertice like performance, documentation, etc" />
@@ -96,7 +98,7 @@ const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDr
       </ListItem>
 
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/page2" {...props} onClick={mainProps.handleDrawerClose} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/page2" {...props} onClick={closeMenu}/>} >
           <Avatar>
            {qualitiesIcon()}
           </Avatar>
@@ -107,7 +109,7 @@ const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDr
       <Divider />
 
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/work" {...props} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/work" {...props} onClick={closeMenu}/>} >
           <Avatar>
             {workExperience()}
           </Avatar>
@@ -116,7 +118,7 @@ const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDr
       </ListItem>
 
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/education" {...props} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/education" {...props} onClick={closeMenu}/>} >
           <Avatar>{educationIcon()}
           </Avatar>
           <ListItemText primary="Education" secondary="" />

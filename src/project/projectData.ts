@@ -22,9 +22,9 @@ export const projects: Project[] = [
     "runtime": [runtime.TypeScriptLanguageService, runtime.NodeJs],
     "libraries": [libraries.angular, libraries.grunt, libraries.browserify],
     "experticeArea": [
-      experticeArea.parser, experticeArea.editorsAndIDEs, experticeArea.pluginsAndExtensibility, experticeArea.devtools, experticeArea.APIdesign, experticeArea.utilities
+      experticeArea.parser, experticeArea.editorsAndIDEs, experticeArea.pluginsAndExtensibility, experticeArea.devtools, experticeArea.APIdesign, experticeArea.tooling
     ],
-    projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.mediumQuality, projectCharacteristic.library, projectCharacteristic.useful]
+    projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.mediumQuality, projectCharacteristic.library, projectCharacteristic.useful, projectCharacteristic.research]
   },
 
   {
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     "language": [language.JavaScript, language.html, language.css],
     "runtime": [runtime.NodeJs],
     "libraries": [libraries.eslint, libraries.prettier],
-    "experticeArea": [experticeArea.documentation, experticeArea.devtools, experticeArea.APIdesign, experticeArea.pluginsAndExtensibility, experticeArea.utilities],
+    "experticeArea": [experticeArea.documentation, experticeArea.devtools, experticeArea.APIdesign, experticeArea.pluginsAndExtensibility, experticeArea.tooling],
     "projectCharacteristic": [projectCharacteristic.mediumSize, projectCharacteristic.mediumComplexity, projectCharacteristic.mediumQuality]
   },
 
@@ -161,7 +161,7 @@ export const projects: Project[] = [
     "runtime": [runtime.NodeJs],
     "libraries": [],
     "experticeArea": [experticeArea.devtools],
-    projectCharacteristic: [projectCharacteristic.smallSize, projectCharacteristic.smallComplexity, projectCharacteristic.goodQuality]
+    projectCharacteristic: [projectCharacteristic.smallSize, projectCharacteristic.smallComplexity, projectCharacteristic.mediumQuality]
   },
   {
     "name": "br-fs-to-json",
@@ -170,11 +170,9 @@ export const projects: Project[] = [
     "language": [language.JavaScript],
     "runtime": [runtime.NodeJs, runtime.browser],
     "libraries": [],
-    "experticeArea": [experticeArea.documentation, experticeArea.devtools],
-    projectCharacteristic: [projectCharacteristic.mediumSize, projectCharacteristic.smallComplexity, projectCharacteristic.poorQuality]
+    "experticeArea": [ experticeArea.devtools],
+    projectCharacteristic: [projectCharacteristic.mediumSize, projectCharacteristic.smallComplexity, projectCharacteristic.mediumQuality]
   },
-
-
 
   {
     "name": "string-utilities",
@@ -185,16 +183,42 @@ export const projects: Project[] = [
     "runtime": [runtime.browser],
     "libraries": [libraries.angular, libraries.grunt, libraries.browserify],
     "experticeArea": [
-      experticeArea.stringManipulation, experticeArea.utilities,
+      experticeArea.stringManipulation, experticeArea.tooling,
     ],
     projectCharacteristic: [projectCharacteristic.mediumSize, projectCharacteristic.smallComplexity, projectCharacteristic.mediumQuality]
-  }
+  },
 
+
+  {
+    "name": "engify",
+    "description": "A research project on targetting the same JavaScript code to several JavaScript engines like node, browser, rhino, nashorn, SpiderMonkey, JavaScriptCore, ringojs, v7, and others. Based on Browserify, it has an implementation of console.log and global object that works on all the engines just to test that our program runs. Test several third party libraries and transpilers in all engines. Also a personal research in the world of not so known JavaScript engines. ",
+    "repositoryUrl": "https://github.com/cancerberoSgx/engify/",
+    "language": [language.JavaScript],
+    "runtime": [runtime.browser, runtime.NodeJs, runtime.others],
+    "libraries": [libraries.browserify],
+    "experticeArea": [
+      experticeArea.javascriptEngines, experticeArea.devtools, experticeArea.instrumentation, experticeArea.testing,
+    ],
+    projectCharacteristic: [projectCharacteristic.bigSize, projectCharacteristic.bigComplexity, projectCharacteristic.mediumQuality, projectCharacteristic.research]
+  },
+
+  {
+    "name": "diff-editor",
+    "description": "A research project on targetting the same JavaScript code to several JavaScript engines like node, browser, rhino, nashorn, SpiderMonkey, JavaScriptCore, ringojs, v7, and others. Based on Browserify, it has an implementation of console.log and global object that works on all the engines just to test that our program runs. Test several third party libraries and transpilers in all engines. Also a personal research in the world of not so known JavaScript engines. ",
+    "repositoryUrl": "https://github.com/cancerberoSgx/diff-editor/",
+    projectPage: "https://cancerberosgx.github.io/diff-editor/static/index.html",
+    "language": [language.JavaScript],
+    "runtime": [runtime.browser],
+    "libraries": [libraries.browserify, libraries.backbone],
+    "experticeArea": [
+      experticeArea.stringManipulation, experticeArea.editorsAndIDEs, experticeArea.ui,
+    ],
+    projectCharacteristic: [projectCharacteristic.mediumSize, projectCharacteristic.mediumComplexity, projectCharacteristic.mediumQuality, projectCharacteristic.useful]
+  },
 ]
 
 /*
 TODO: 
-https://github.com/cancerberoSgx/engify
 https://github.com/cancerberoSgx/diff-editor
 https://github.com/cancerberoSgx/raphael4gwt
 https://github.com/cancerberoSgx/prettier-eslint-gallery-vscode-extension

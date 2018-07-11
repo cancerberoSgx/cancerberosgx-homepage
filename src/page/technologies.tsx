@@ -35,39 +35,62 @@ const technologies: { name: string, url: string, description: string }[] = [
   {
     name: 'JavaScript Programming Language',
     url: '',
-    description: 'I have more than 15 years of experience in JavaScript, and lived the early - pre-ajax  days when it was used only as small scripts in forms. I followed its evlolution, used early transpilers and keep updated in new ecma versions, standards, design patterns and technologies. . '
+    description: 'I have more than 15 years of experience in JavaScript, and lived the early - pre-ajax  days when it was used only as small scripts in forms. I followed its evolution, used early transpilers and keep updated in new ecma versions, standards, design patterns and technologies. . '
   },
   {
     name: 'Node.js',
-    url: 'http://java2script.github.io/java2script/',
-    description: `Ten years ago, when the concept of transpilers was not so common and GWT was in its early stages, the project java2script was one of the best tools to be able to write Rich Client Applications using Java programming language and transpile them to JavaScript. I made several contributions there so the original author made me co-author of the project. I learn a lot about code parsing and AST (both Java's and JavaScript's), and Eclipse Platform APIs and I implemented several libraries wrappers so people could write client code using Java and most used JavaScript libraries. Although today java2script is eclipsed by other technologies like GWT or TypeScript at that time was very promised and give me the opportunity to learn a lot. `
+    url: ' ',
+    description: ` `
   },  
   
   {
     name: 'Browser\'s related standards',
     url: 'w3c.org',
-    description: 'I\'m an expert in several APIs and standards related to the Browser like HTML, DOM, CSS, SVG, XML, XSD, DTD, almost all HTML5 APIs and new emerging standards like '
+    description: 'I consider myself an expert in several APIs and standards related to the Browser like HTML, DOM, CSS, SVG, XML, XSD, DTD, I try to be up-to day with new standards and proposals since more and more the browser seems to be the most important platform for interactive applications and new standards open important opportunities'
   },  
   
   {
-    name: 'Browser\'s related standards',
+    name: 'Developer tools',
     url: 'w3c.org',
-    description: 'I\'m an expert in several APIs and standards related to the Browser like HTML, DOM, CSS, XML, XSD, DTD, HTML5 APIs'
+    description: 'node.js based developer tools like webpack, browserify, grunt, gulp, npm, transpilers like babel, TypeScript, compilers APIs like sass, less, handlebars, optimization tools like coded minification tools like uglify, google closure compiler,  image optimizers, code indentation, git hooks '
   },  
 
+
   {
-    name: 'WIP',
+    name: 'Version control',
+    url: 'w3c.org',
+    description: 'My first contact was cvs, as almost everybody after that I used SVN. And now git is my preference and I also used Perforce a lot. '
+  },  
+
+
+  {
+    name: 'Data bases',
+    url: '',
+    description: 'I have used some relational Data base systems like Oracle, MySql and Postgress. Although in general I always program using a ORM library like hibernate or TypeORM I think I have an acceptable knowledge of the SQL language itself. I also have experience with non relational databases like MongoDb and Redis, particularly the first one.'
+  },  
+  {
+    name: 'Java / J2EE',
     url: 'WIP',
     description: 'WIP'
   },  
 
   {
-    name: 'WIP',
+    name: 'Linux',
     url: 'WIP',
     description: 'WIP'
   },  
 
   
+  {
+    name: 'GWT',
+    url: 'WIP',
+    description: 'WIP'
+  },  
+  {
+    name: 'eclipse Platform',
+    url: 'WIP',
+    description: 'WIP'
+  },  
 
 ]
 
@@ -81,8 +104,12 @@ function page1(props: WithStyles<typeof styles>) {
 
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
-            <Typography> <h3 className={classNames('page-home', theme.palette.primary.main, classes.welcome)}>Mastered Technologies </h3>
-              <div>This is a list of the technologies (I think) I master or others that although I'm not an expert I've used extensively </div></Typography>
+            <Typography> <h3 className={classNames('page-home', theme.palette.primary.main, classes.welcome)}>WIP - Mastered Technologies </h3>
+              <div>WIP - This is a list of the technologies (I think) I master or others that although I'm not an expert I've used extensively </div>
+              <p>
+              Regarding technologies you will never hear me saying that a certain technology is superior than another in an absolute manner. Before solving a problem I always care to choose the technology that better solves the important aspects of the problem. For example, although I worked a lot tunning system performance, if performance is not important I won't hesitate to choose a less performant technology if more important aspects of the problem are resolved better, like implementation time or stability. I know that for people working only in one area for long time, particularly in security or performance, it could be hard to realize that sometimes that area is not an important aspect of the problem.</p> 
+              
+              <p>And when I can, I consider the word <strong>productivity</strong> to not only mean "amount of software produced over time" but also learning is a very important factor, so sometimes I even consider not using a library or framework that would solve a problem faster and better, and implement a solution from scratch, just by the sake of learning how to solve a concrete part of the problem. </p></Typography>
           </Paper>
         </Grid>
       </Grid>
