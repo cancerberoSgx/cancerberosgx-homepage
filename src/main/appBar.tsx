@@ -9,6 +9,7 @@ import * as React from 'react';
 import Main from './mainContent';
 import Menu, { drawerWidth } from './menu';
 import AppBarIcons from './AppBarIcons';
+// import EventListener, {withOptions} from 'react-event-listener';
 
 const styles = (theme: Theme) => createStyles({
   root: {
@@ -117,15 +118,9 @@ export class AppBarNaked extends React.Component<AppBarProps, AppBarState> {
               </Grid>
             </Toolbar>
           </AppBarComponent>
-
-          {/* {(this.state.open ? [1] : []).map(el=><ClickAwayListener onClickAway={this.handleDrawerClose}>)} */}
-          <ClickAwayListener onClickAway={()=>this.handleDrawerClose()}>
-          <Menu 
-          open={this.state.open} handleDrawerClose={() => this.handleDrawerClose()} 
-          
-
-          />
-          {/* {(this.state.open ? [1] : []).map(el=></ClickAwayListener>)} */}
+          <ClickAwayListener onClickAway={()=>{if(this.state.open) setTimeout(this.handleDrawerClose.bind(this), 50)}}
+           >
+            <Menu open={this.state.open} handleDrawerClose={this.handleDrawerClose.bind(this) } />
           </ClickAwayListener> 
           <main
             className={classNames(classes.content, classes[`content-${this.state.anchor}`], {
@@ -140,4 +135,5 @@ export class AppBarNaked extends React.Component<AppBarProps, AppBarState> {
   }
 }
 
+// function 
 export const AppBar = withStyles(styles, { withTheme: true })(AppBarNaked);
