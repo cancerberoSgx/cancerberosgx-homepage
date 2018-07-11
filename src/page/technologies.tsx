@@ -1,9 +1,15 @@
-import { Card, CardContent, CardMedia, Typography, Button } from '@material-ui/core';
+import { Avatar, Card, CardActions, CardContent, CardMedia, Typography, Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
+import { TypographyProps } from '@material-ui/core/Typography';
 import * as classNames from 'classnames';
 import * as React from 'react';
+import { Link, LinkProps } from 'react-router-dom';
+import contributionsIcon from '../icon/contributionsIcon';
+import projectsIcon from '../icon/projectsIcon';
+import technologiesIcon from '../icon/technologiesIcon';
+
 
 const styles = (theme: Theme) => createStyles({
   root: {
@@ -24,23 +30,29 @@ const styles = (theme: Theme) => createStyles({
   }
 });
 
-const contributions: { name: string, url: string, description: string }[] = [
+const technologies: { name: string, url: string, description: string }[] = [
 
   {
-    name: 'Mention as contributor in Node.js release version 10.0.0',
-    url: 'https://nodejs.org/en/blog/release/v10.0.0/',
-    description: 'Once I was using Node.js socket API I noticed some of its signatures luck documentation so I made a pull request that was merged and released in release 10.0.0. I\'m proud my name appear in such a great product release page mentioning that contribution and proud that node.js users will read a couple of lines contributed by myself. Was enriching to participate in the pull request code review process made by Node.js team for that issue although it was just documentation, was extensively reviewed by lots of people.'
+    name: 'JavaScript Programming Language',
+    url: '',
+    description: 'I have more than 15 years of experience in JavaScript, and lived the early - pre-ajax  days when it was used only as small scripts in forms. I followed its evlolution, used early transpilers and keep updated in new ecma versions, standards, design patterns and technologies. . '
   },
   {
-    name: 'Co-Author of java2script project',
+    name: 'Node.js',
     url: 'http://java2script.github.io/java2script/',
     description: `Ten years ago, when the concept of transpilers was not so common and GWT was in its early stages, the project java2script was one of the best tools to be able to write Rich Client Applications using Java programming language and transpile them to JavaScript. I made several contributions there so the original author made me co-author of the project. I learn a lot about code parsing and AST (both Java's and JavaScript's), and Eclipse Platform APIs and I implemented several libraries wrappers so people could write client code using Java and most used JavaScript libraries. Although today java2script is eclipsed by other technologies like GWT or TypeScript at that time was very promised and give me the opportunity to learn a lot. `
   },  
   
   {
-    name: 'yui4 java mention in Yahoo YUI blog',
-    url: 'https://yuiblog.com/blog/2010/04/13/yui4java-a-new-java-to-javascript-translator-using-yui-2/',
-    description: 'In my early days with technologies like GTW and java2script I made a port of the whole YUI version 2 and 3 libraries so people can write applications using these libraries in the Java Programming language. This is the mention to me and my project yui4java that the Yahoo YUI team made in their blog. '
+    name: 'Browser\'s related standards',
+    url: 'w3c.org',
+    description: 'I\'m an expert in several APIs and standards related to the Browser like HTML, DOM, CSS, SVG, XML, XSD, DTD, almost all HTML5 APIs and new emerging standards like '
+  },  
+  
+  {
+    name: 'Browser\'s related standards',
+    url: 'w3c.org',
+    description: 'I\'m an expert in several APIs and standards related to the Browser like HTML, DOM, CSS, XML, XSD, DTD, HTML5 APIs'
   },  
 
   {
@@ -48,36 +60,42 @@ const contributions: { name: string, url: string, description: string }[] = [
     url: 'WIP',
     description: 'WIP'
   },  
+
   {
     name: 'WIP',
     url: 'WIP',
     description: 'WIP'
-  },
+  },  
+
+  
 
 ]
 
-function contributionsPage(props: WithStyles<typeof styles>) {
-  const { classes, theme } = props
+function page1(props: WithStyles<typeof styles>) {
+  const { classes, theme } = props;
+
   return (
+
     <div className={classes.root}>
       <Grid container spacing={24} alignItems="stretch">
+
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
-            <Typography> 
-              <h3 className={classNames('page-home', theme.palette.primary.main, classes.welcome)}>Open Source Contributions</h3>
-              <div>This is just a list of contributions to (other's) open source projects that I feel proud of or just mentions to me in blogs, tweets, etc. </div>
-              </Typography>
+            <Typography> <h3 className={classNames('page-home', theme.palette.primary.main, classes.welcome)}>Mastered Technologies </h3>
+              <div>This is a list of the technologies (I think) I master or others that although I'm not an expert I've used extensively </div></Typography>
           </Paper>
         </Grid>
       </Grid>
 
       <Grid container spacing={24} alignItems="stretch">
-        {contributions.map((contribution, i) =>
-          <Grid item xs={12} sm={6} lg={4} key={i}>
+        {technologies.map(contribution =>
+          <Grid item xs={12} sm={6} lg={4}>
             <Card className={classes.card}>
               <CardContent>
+                <Typography>
+                </Typography>
                 <Typography variant="headline" component="h2">
-                  <Button href={contribution.url}>{contribution.name}</Button>
+                  <Button href={contribution.url}>  {contribution.name}</Button>
                 </Typography>
                 <Typography color="textSecondary">
                   {contribution.description}
@@ -91,4 +109,4 @@ function contributionsPage(props: WithStyles<typeof styles>) {
   )
 }
 
-export default withStyles(styles, { withTheme: true })(contributionsPage);
+export default withStyles(styles, { withTheme: true })(page1);

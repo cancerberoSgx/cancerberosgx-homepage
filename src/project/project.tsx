@@ -17,12 +17,15 @@ const styles = (theme: Theme) => createStyles({
   },
   chip: {
     margin: theme.spacing.unit,
-    // fontSize: theme.spacing.unit * 0.96
   },
   card: {
-
     height: '100%',
-  }
+  }, 
+  // cardActions: {
+  //   [theme.breakpoints.up('md')]: {
+  //     display: 'block'
+  //   }
+  // }
 });
 
 function Projects(props: WithStyles<typeof styles> & { project: Project }) {
@@ -31,19 +34,23 @@ function Projects(props: WithStyles<typeof styles> & { project: Project }) {
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography  >
 
           <Button type="text" className={classNames(!project.repositoryUrl && classes.hide)} href={project.repositoryUrl}>
-            <iframe src={`https://ghbtns.com/github-btn.html?user=cancerberosgx&repo=${project.name}&type=star&count=true`} frameBorder="0" scrolling="0" width="80px" height="20px" ></iframe></Button>
-          <Button type="text" className={classNames(!project.projectPage && classes.hide)} href={project.projectPage}>Home Page</Button>
-
+            <iframe src={`https://ghbtns.com/github-btn.html?user=cancerberosgx&repo=${project.name}&type=star&count=true`} frameBorder="0" scrolling="0" width="80px" height="20px" ></iframe>
+            </Button>
+          <Button type="text" className={classNames(!project.projectPage && classes.hide)} href={project.projectPage}>
+          
+        <Typography>
+          Home Page
         </Typography>
+          </Button>
+
         <Typography variant="headline" component="h2">
           {project.name}
         </Typography>
-        <Typography color="textSecondary">
-        </Typography>
-        <Typography component="p">
+        {/* <Typography color="textSecondary">
+        </Typography> */}
+        <Typography>
           {project.description}
         </Typography>
       </CardContent>
@@ -54,7 +61,7 @@ function Projects(props: WithStyles<typeof styles> & { project: Project }) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <CardActions>
-            <p className={classNames(!project.libraries.length && classes.hide)} >
+            <div className={classNames(!project.libraries.length && classes.hide)} >
               <strong>Libraries: </strong>
               <Typography className={classes.title} color="textSecondary">
                 {project.libraries.map(lib =>
@@ -65,8 +72,8 @@ function Projects(props: WithStyles<typeof styles> & { project: Project }) {
                     component={(props: ChipProps & LinkProps) => <Link to={"/projects/tag/" + lib} {...props} />} />
                 )}
               </Typography>
-            </p>
-            <p className={classNames(!project.experticeArea.length && classes.hide)} ><strong>Areas: </strong>
+            </div>
+            <div className={classNames(!project.experticeArea.length &&   classes.hide)} ><strong>Areas: </strong>
               <Typography className={classes.title} color="textSecondary">
                 {(project.experticeArea || []).map(tag =>
                   <Chip
@@ -76,7 +83,7 @@ function Projects(props: WithStyles<typeof styles> & { project: Project }) {
                     component={(props: ChipProps & LinkProps) => <Link to={"/projects/tag/" + tag} {...props} />} />
                 )}
               </Typography>
-            </p>
+            </div>
           </CardActions>
         </ExpansionPanelDetails>
       </ExpansionPanel>

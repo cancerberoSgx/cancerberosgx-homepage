@@ -29,7 +29,7 @@ const styles = (theme: Theme) => createStyles({
     position: 'relative',
   },
   'react-autosuggest__input': {
-    width: 240,
+    width: 100,
     height: 30,
     padding: '10px 20px',
   },
@@ -40,7 +40,7 @@ const styles = (theme: Theme) => createStyles({
     display: 'block',
     position: 'absolute',
     top: '51px',
-    width: '280px',
+    width: 100,
     border: '1px solid #aaa',
     zIndex: 2,
   },

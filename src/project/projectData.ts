@@ -1,4 +1,3 @@
-import { lightBaseTheme } from 'material-ui/styles';
 import { Project, language, runtime, libraries, experticeArea, projectCharacteristic } from './projectMetadata';
 
 

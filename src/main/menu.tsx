@@ -18,14 +18,14 @@ import educationIcon from '../icon/educationIcon';
 import githubProfileIcon from '../icon/githubProfileIcon';
 import linkedinProfileIcon from '../icon/linkedinProfileIcon';
 import stackOverflowIcon from '../icon/stackOverflowIcon';
+import homeIcon from '../icon/homeIcon';
 
-export const drawerWidth = '400';
+export const drawerWidth = window.innerWidth> 800 ? 400 : window.innerWidth///2///(window.innerWidth)  '400';
 
 const styles = (theme: Theme) => createStyles({
   drawerPaper: {
     position: 'relative',
     width: drawerWidth,
-    paddingLeft: '10px',
   },
   drawerHeader: {
     display: 'flex',
@@ -34,30 +34,26 @@ const styles = (theme: Theme) => createStyles({
     ...theme.mixins.toolbar,
   }
 });
-const drawer = (props: WithStyles<typeof styles> & { open: boolean, handleDrawerClose: () => void }) => (
-  <Drawer
+const drawer = (mainProps: WithStyles<typeof styles> & { open: boolean, handleDrawerClose: () => void }) => {
+  return <Drawer
     variant="persistent"
     anchor="left"
-    open={props.open}
+    open={mainProps.open}
     classes={{
-      paper: props.classes.drawerPaper,
+      paper: mainProps.classes.drawerPaper,
     }}
   >
-    <div className={props.classes.drawerHeader}>
-      <IconButton onClick={props.handleDrawerClose}>
-        {props.theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+    <div className={mainProps.classes.drawerHeader}>
+      <IconButton onClick={mainProps.handleDrawerClose}>
+        {mainProps.theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
       </IconButton>
     </div>
     <Divider />
-
     <List>
-
       <ListItem>
         <Button component={(props: ButtonProps & LinkProps) => <Link to="/" {...props} />} >
           <Avatar>
-            <svg width="24" height="24" viewBox="0 0 24 24">
-              <path fill="#000000" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
-            </svg>
+            {homeIcon()}
           </Avatar>
           <ListItemText primary="Home" secondary="" />
         </Button>
@@ -70,14 +66,13 @@ const drawer = (props: WithStyles<typeof styles> & { open: boolean, handleDrawer
           <Avatar>
             {projectsIcon()}
           </Avatar>
-          <ListItemText primary="Projects" secondary="Open Source Projects I've authored" />
+          <ListItemText primary="Projects" secondary="Open Source Projects I've authored" onClick={mainProps.handleDrawerClose} />
         </Button>
       </ListItem>
 
       <ListItem>
         <Button component={(props: ButtonProps & LinkProps) => <Link to="/contributions" {...props} />} >
           <Avatar>
-            
           {contributionsIcon()}
           </Avatar>
           <ListItemText primary="Contributions" secondary="Contributions to open source projects that I feel proud of" />
@@ -101,15 +96,13 @@ const drawer = (props: WithStyles<typeof styles> & { open: boolean, handleDrawer
       </ListItem>
 
       <ListItem>
-        <Button component={(props: ButtonProps & LinkProps) => <Link to="/page2" {...props} />} >
+        <Button component={(props: ButtonProps & LinkProps) => <Link to="/page2" {...props} onClick={mainProps.handleDrawerClose} />} >
           <Avatar>
            {qualitiesIcon()}
           </Avatar>
           <ListItemText primary="Qualities" secondary="Opinions about myself as developer" />
         </Button>
       </ListItem>
-
-
 
       <Divider />
 
@@ -158,10 +151,10 @@ const drawer = (props: WithStyles<typeof styles> & { open: boolean, handleDrawer
           <ListItemText primary="StackOverflow Profile" secondary="Sometimes I answer questions" />
         </Button>
       </ListItem>
+
     </List>
-
-
   </Drawer>
-);
+
+}
 
 export default withStyles(styles, { withTheme: true })(drawer);

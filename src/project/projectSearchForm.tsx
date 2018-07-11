@@ -21,10 +21,7 @@ const styles = (theme: Theme) => createStyles({
 });
 
 const projectSearchForm = (props: WithStyles<typeof styles> & { match: match<{ tag: string , project: string}> }) => {
-  const { classes } = props;
-  // if (props.match.params.tag || props.match.params.project) {
-  //   return <p>Filtering by {props.match.params.tag ? 'tag' : props.match.params.project ? 'project' : ''} containing "{props.match.params.tag || props.match.params.project}". <Button component={(props: ButtonProps & LinkProps) => <Link to="/projects" {...props} />}>Clear Filters</Button> </p>
-  // }
+  const { classes } = props
   return (
     <Grid container spacing={24} className={classes.search}>
       {((props.match.params.tag || props.match.params.project ) ? [1] : []).map(a=>

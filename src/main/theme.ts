@@ -1,6 +1,5 @@
 import { createMuiTheme, Theme } from '@material-ui/core/styles';
-
-export default createMuiTheme({
+const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#757ce8',
@@ -20,6 +19,15 @@ export default createMuiTheme({
       root: {
         textTransform: 'none'
       }
+    }, 
+    MuiCardActions: {
+      root: {
+        // [createMuiTheme({}).breakpoints.down('md')]: {
+          display: 'block'
+        // }
+      }
     }
   }
-}) as Theme;
+})
+
+export default theme as Theme;

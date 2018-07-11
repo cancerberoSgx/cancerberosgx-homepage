@@ -30,7 +30,8 @@ const styles = (theme: Theme) => createStyles({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
-  }, inline: {
+  }, 
+  inline: {
     display: 'inline-flex'
   },
 });
@@ -48,10 +49,10 @@ function page1(props: WithStyles<typeof styles>) {
             title="Contemplative Reptile"
           />
           <CardContent>
-            <Typography gutterBottom variant="headline" component="h2">
+            <Typography gutterBottom variant="headline">
               Sebastián Gurin
           </Typography>
-            <Typography component="p">
+            <Typography>
               Also known as <em>cancerberosgx</em>, software developer, new technologies learning enjoyer TODO TODO TODO
           </Typography>
           </CardContent>
@@ -62,12 +63,11 @@ function page1(props: WithStyles<typeof styles>) {
 
       <Grid item xs={12} sm={8}>
         <Paper className={classes.paper}>
-          <Typography> <h3 className={classNames('page-home', theme.palette.primary.main, classes.welcome)}>Welcome to <span>Sebastián Gurin</span>'s Personal Page</h3>
-            <p>My name is Sebastian Gurin and I'm software developer TODO TODO TODO </p>
-            <p>This site details my expertice and experience, and in particular, will lists open source projects I've written or contribute to. </p></Typography>
-
-
-
+          <Typography> 
+            <h3 className={classNames('page-home', theme.palette.primary.main, classes.welcome)}>Welcome to <span>Sebastián Gurin</span>'s Personal Page</h3>
+            <div>My name is Sebastian Gurin and I'm software developer TODO TODO TODO </div>
+            <div>This site details my expertice and experience, and in particular, will lists open source projects I've written or contribute to. </div>
+            </Typography>
         </Paper>
       </Grid>
 
@@ -75,20 +75,18 @@ function page1(props: WithStyles<typeof styles>) {
       <Grid item sm={12} md={6} lg={4} xl={3}>
         <Card className={classes.paper}>
           <CardContent>
-            <Typography variant="headline" component={(props: TypographyProps & LinkProps) => <Link to="/projects" {...props} />}><Avatar component="span" className={classNames(classes.inline)}>
+            <Typography variant="headline" component={(props: TypographyProps & LinkProps) => <Link to="/projects" {...props} />}>
+            <Avatar component="span" className={classNames(classes.inline)}>
               {projectsIcon()}
-            </Avatar>Projects</Typography>
+            </Avatar>
+            Projects</Typography>
             <Typography gutterBottom variant="subheading"  >
               Open Source Projects I've authored
           </Typography>
-            {/* </Button> */}
-            <Typography component="p" variant="body1">
+            <Typography variant="body1">
               This is probably the most important part of this website, because in general, these open source projects is what better describe both my knowledge, expertice and personal technology preferences.
-          </Typography>
-            {/* </Link> */}
+            </Typography>
           </CardContent>
-          <CardActions>
-          </CardActions>
         </Card>
       </Grid>
 
@@ -98,12 +96,11 @@ function page1(props: WithStyles<typeof styles>) {
             <Typography variant="headline" component={(props: TypographyProps & LinkProps) => <Link to="/contributions" {...props} />}>
               <Avatar component="span" className={classNames(classes.inline)}>
                 {contributionsIcon()}
-              </Avatar>Contributions</Typography>
-            <Typography gutterBottom variant="subheading"  > Contributions to open source projects that I feel proud of  </Typography>
-            <Typography component="p" variant="body1"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt voluptates fugit aut ducimus eaque aperiam, ad voluptatum minus repudiandae dicta possimus aspernatur illum dolorum? Temporibus eaque voluptates quaerat quis saepe! TODO </Typography>
+              </Avatar>
+              Contributions</Typography>
+            <Typography gutterBottom variant="subheading">Contributions to open source projects that I feel proud of  </Typography>
+            <Typography variant="body1"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt voluptates fugit aut ducimus eaque aperiam, ad voluptatum minus repudiandae dicta possimus aspernatur illum dolorum? Temporibus eaque voluptates quaerat quis saepe! TODO </Typography>
           </CardContent>
-          <CardActions>
-          </CardActions>
         </Card>
       </Grid>
 
@@ -115,10 +112,8 @@ function page1(props: WithStyles<typeof styles>) {
                 {technologiesIcon()}
               </Avatar>Technologies</Typography>
             <Typography gutterBottom variant="subheading"  >Mastered technologies, programming languages, etc</Typography>
-            <Typography component="p" variant="body1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae veniam consequatur, velit possimus natus voluptatum a qui unde obcaecati. Vel repudiandae nisi maiores unde iure incidunt assumenda rem accusamus soluta.TODO </Typography>
+            <Typography variant="body1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae veniam consequatur, velit possimus natus voluptatum a qui unde obcaecati. Vel repudiandae nisi maiores unde iure incidunt assumenda rem accusamus soluta.TODO </Typography>
           </CardContent>
-          <CardActions>
-          </CardActions>
         </Card>
       </Grid>
 
@@ -130,10 +125,8 @@ function page1(props: WithStyles<typeof styles>) {
                 {technologiesIcon()}
               </Avatar>Expertice</Typography>
             <Typography gutterBottom variant="subheading"  >Areas of expertice like performance, documentation, etc</Typography>
-            <Typography component="p" variant="body1"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. In deserunt aspernatur architecto commodi beatae ea perspiciatis culpa a quidem molestiae necessitatibus error sequi tempora nesciunt harum, vero alias odio praesentium. TODO </Typography>
+            <Typography variant="body1"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. In deserunt aspernatur architecto commodi beatae ea perspiciatis culpa a quidem molestiae necessitatibus error sequi tempora nesciunt harum, vero alias odio praesentium. TODO </Typography>
           </CardContent>
-          <CardActions>
-          </CardActions>
         </Card>
       </Grid>
 
@@ -145,10 +138,8 @@ function page1(props: WithStyles<typeof styles>) {
                 {technologiesIcon()}
               </Avatar>Work Experience</Typography>
             <Typography gutterBottom variant="subheading"  >(paid) Jobs in companies or as freelancer</Typography>
-            <Typography component="p" variant="body1"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora enim commodi cum id minima delectus error temporibus totam eos. Magnam tenetur sequi maxime earum! Fugiat perspiciatis tempore earum exercitationem reprehenderit! TODO </Typography>
+            <Typography variant="body1"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora enim commodi cum id minima delectus error temporibus totam eos. Magnam tenetur sequi maxime earum! Fugiat perspiciatis tempore earum exercitationem reprehenderit! TODO </Typography>
           </CardContent>
-          <CardActions>
-          </CardActions>
         </Card>
       </Grid>
 
@@ -160,13 +151,11 @@ function page1(props: WithStyles<typeof styles>) {
                 {technologiesIcon()}
               </Avatar>Education</Typography>
             <Typography gutterBottom variant="subheading"  >Lorem ipsum dolor sit TODO .</Typography>
-            <Typography component="p" variant="body1"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam sit, molestiae qui exercitationem pariatur beatae corrupti ut dolorum et, asperiores officia laboriosam sequi, voluptas voluptatum harum velit iure! Hic, deleniti? TODO </Typography>
+            <Typography variant="body1"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam sit, molestiae qui exercitationem pariatur beatae corrupti ut dolorum et, asperiores officia laboriosam sequi, voluptas voluptatum harum velit iure! Hic, deleniti? TODO
+            </Typography>
           </CardContent>
-          <CardActions>
-          </CardActions>
         </Card>
       </Grid>
-
     </Grid>
   );
 }

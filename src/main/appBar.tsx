@@ -1,4 +1,4 @@
-import { Button, Grid } from '@material-ui/core';
+import { Button, Grid, ClickAwayListener } from '@material-ui/core';
 import AppBarComponent from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
@@ -7,7 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import Main from './mainContent';
-import Drawer, { drawerWidth } from './menu';
+import Menu, { drawerWidth } from './menu';
 import AppBarIcons from './AppBarIcons';
 
 const styles = (theme: Theme) => createStyles({
@@ -56,7 +56,7 @@ const styles = (theme: Theme) => createStyles({
     }),
   },
   'content-left': {
-    marginLeft: -drawerWidth - 100,
+    marginLeft: -drawerWidth - 10,//(window.innerWidth>800 ? 30 : 10),//drawerWidth/4, //TODO: magic number
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -75,16 +75,15 @@ export class AppBarNaked extends React.Component<AppBarProps, AppBarState> {
   state = {
     open: false,
     anchor: 'left',
-  };
+  }
 
   handleDrawerOpen() {
     this.setState({ open: true });
-  };
+  }
 
   handleDrawerClose() {
     this.setState({ open: false });
-  };
-
+  }
   render(): React.ReactNode {
 
     const { classes }: { classes: any, theme?: Theme } = this.props
@@ -112,15 +111,22 @@ export class AppBarNaked extends React.Component<AppBarProps, AppBarState> {
                   </IconButton>
                 </Grid>
                 <Grid item xs={6} sm={6} style={{ flexBasis: '50%' }}>
-                Sebastian Gurin Personal Page
+                {/* Sebastian Gurin Personal Page */}
                   <AppBarIcons />
                 </Grid>
               </Grid>
             </Toolbar>
           </AppBarComponent>
 
-          <Drawer open={this.state.open} handleDrawerClose={() => this.handleDrawerClose()} />
+          {/* {(this.state.open ? [1] : []).map(el=><ClickAwayListener onClickAway={this.handleDrawerClose}>)} */}
+          <ClickAwayListener onClickAway={()=>this.handleDrawerClose()}>
+          <Menu 
+          open={this.state.open} handleDrawerClose={() => this.handleDrawerClose()} 
+          
 
+          />
+          {/* {(this.state.open ? [1] : []).map(el=></ClickAwayListener>)} */}
+          </ClickAwayListener> 
           <main
             className={classNames(classes.content, classes[`content-${this.state.anchor}`], {
               [classes.contentShift]: open,
