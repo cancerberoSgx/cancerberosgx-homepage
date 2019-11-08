@@ -106,15 +106,6 @@ Apply ImageMagick transformations "real time" by moving the mouse and experience
 
 
 
-### TODO
-
-TODO
-
- * **Technologies**: react, 
- * **Repository**: TODO
- * **Demos**: TODO
-
-
 ### Magica Playground
 
 A place to run ImageMagick commands in the browser. Uses [magica](https://github.com/cancerberoSgx/magica) a project of mine that ports image magick and its delegate libraries to JavaScript.
@@ -125,7 +116,16 @@ A place to run ImageMagick commands in the browser. Uses [magica](https://github
 
 
 
+### TODO: this project
 
-https://cancerberosgx.github.io/demos/geometrizejs-playground/
+TODO: this project
+
+ * **Technologies**: react, TODO
+ * **Repository**: TODO
+ * **Demos**: TODO
+
+
+
+TODO: https://cancerberosgx.github.io/demos/geometrizejs-playground/
 
 
